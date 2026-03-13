@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "DXwwqjeG9bV0kNtRllfhq"
+uri = "file://README.md"
+type = "text"
+title = "README.md — WeatherML"
