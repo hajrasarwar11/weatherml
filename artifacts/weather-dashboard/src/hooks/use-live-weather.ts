@@ -59,3 +59,13 @@ export function useOneCall(lat: number | null, lon: number | null) {
     retry: false,
   });
 }
+
+export function useDailyForecast(city: string) {
+  return useQuery({
+    queryKey: ["weather", "daily-forecast", city],
+    queryFn: () => fetchJson(`${API_BASE}/weather/daily-forecast?city=${encodeURIComponent(city)}`),
+    enabled: !!city,
+    staleTime: 1000 * 60 * 30,
+    retry: false,
+  });
+}

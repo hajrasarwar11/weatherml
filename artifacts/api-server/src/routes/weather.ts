@@ -84,8 +84,8 @@ async function fetchCurrentByCoords(
   const resp = await fetch(
     `${OWM_BASE}/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
   );
-  const data = await resp.json();
-  if (!resp.ok) throw Object.assign(new Error(data?.message ?? `HTTP ${resp.status}`), { status: resp.status, body: data });
+  const data = (await resp.json()) as { message?: string; [key: string]: unknown };
+  if (!resp.ok) throw Object.assign(new Error(data.message ?? `HTTP ${resp.status}`), { status: resp.status, body: data });
   return data as Record<string, unknown>;
 }
 
@@ -301,6 +301,37 @@ router.get("/weather/alerts", async (req, res) => {
     const e = err as Error & { status?: number; body?: unknown };
     const status = e.status ?? 500;
     res.status(status).json(e.body ?? { error: e.message ?? "Failed to fetch alerts data" });
+  }
+});
+
+router.get("/weather/daily-forecast", async (req, res) => {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    res.status(503).json({ error: "OPENWEATHER_API_KEY not configured" });
+    return;
+  }
+  const cityParam = (req.query.city as string) || "Toronto";
+  try {
+    const geoResp = await fetch(
+      `${OWM_GEO}/direct?q=${encodeURIComponent(cityParam)}&limit=1&appid=${apiKey}`
+    );
+    const geoData = (await geoResp.json()) as Array<{ lat: number; lon: number; name: string; country: string }>;
+    if (!geoResp.ok || !Array.isArray(geoData) || geoData.length === 0) {
+      res.status(404).json({ error: "City not found" });
+      return;
+    }
+    const { lat, lon, name, country } = geoData[0];
+    const oneCallResp = await fetch(
+      `${OWM_BASE}/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&exclude=minutely,hourly,alerts`
+    );
+    const oneCallData = (await oneCallResp.json()) as Record<string, unknown>;
+    if (!oneCallResp.ok) {
+      res.status(oneCallResp.status).json(oneCallData);
+      return;
+    }
+    res.json({ ...oneCallData, city: { name, country } });
+  } catch {
+    res.status(500).json({ error: "Failed to fetch daily forecast" });
   }
 });
 
