@@ -72,3 +72,4 @@ replit.md
 .agents/
 .replit-artifact/
 **/.replit-artifact/
+uv.lock
