@@ -1,26 +1,48 @@
-import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
+interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step?: number;
+  unit?: string;
+  onChange: (val: number) => void;
+}
 
-const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative flex w-full touch-none select-none items-center",
-      className
-    )}
-    {...props}
-  >
-    <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20">
-      <SliderPrimitive.Range className="absolute h-full bg-primary" />
-    </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary/50 bg-background shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" />
-  </SliderPrimitive.Root>
-))
-Slider.displayName = SliderPrimitive.Root.displayName
+export function Slider({ label, value, min, max, step = 1, unit = "", onChange, className, ...props }: SliderProps) {
+  const percentage = ((value - min) / (max - min)) * 100;
 
-export { Slider }
+  return (
+    <div className={cn("flex flex-col gap-3", className)}>
+      <div className="flex justify-between items-end">
+        <label className="text-sm font-semibold text-foreground/90 tracking-wide">
+          {label}
+        </label>
+        <div className="bg-background/50 border border-border px-3 py-1 rounded-md text-primary font-mono text-sm font-bold shadow-inner">
+          {value}{unit}
+        </div>
+      </div>
+      <div className="relative w-full py-2">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(e) => onChange(parseFloat(e.target.value))}
+          className="w-full relative z-10"
+          style={{
+            background: `linear-gradient(to right, hsl(var(--primary)) ${percentage}%, hsl(var(--muted)) ${percentage}%)`
+          }}
+          {...props}
+        />
+      </div>
+      <div className="flex justify-between text-xs text-muted-foreground font-mono">
+        <span>{min}{unit}</span>
+        <span>{max}{unit}</span>
+      </div>
+    </div>
+  );
+}

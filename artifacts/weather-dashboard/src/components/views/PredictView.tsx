@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Slider } from "@/components/ui/Slider";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Slider } from "@/components/ui/slider";
 import { useWeatherPrediction } from "@/hooks/use-weather-data";
 import { WeatherIcon } from "@/components/WeatherIcon";
 import { Cloud, Loader2, Zap } from "lucide-react";

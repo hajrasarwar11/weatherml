@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import type { DashboardData } from "@/hooks/use-weather-data";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
   LineChart, Line, ScatterChart, Scatter, ZAxis
@@ -57,7 +58,7 @@ function CorrelationHeatmap({ matrix }: { matrix: Record<string, Record<string, 
   );
 }
 
-export function EdaView({ data }: { data: any }) {
+export function EdaView({ data }: { data: DashboardData }) {
   const datasetInfo = data.dataset_info || {};
 
   return (
@@ -130,7 +131,7 @@ export function EdaView({ data }: { data: any }) {
                   contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', borderRadius: '8px', color: '#f1f5f9' }}
                 />
                 <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                  {data.classDistData?.map((_: any, index: number) => (
+                  {data.classDistData?.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Bar>

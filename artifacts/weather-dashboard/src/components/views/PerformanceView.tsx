@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import type { DashboardData } from "@/hooks/use-weather-data";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPercentage } from "@/lib/utils";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { motion } from "framer-motion";
@@ -54,7 +55,7 @@ function ConfusionMatrixGrid({ matrix, labels }: { matrix: number[][], labels: s
   );
 }
 
-export function PerformanceView({ data }: { data: any }) {
+export function PerformanceView({ data }: { data: DashboardData }) {
   const { testAccuracy, cvAccuracy, bestParams, featureImportanceData, perClassMetrics, confusionMatrix, classLabels } = data;
 
   return (
@@ -101,7 +102,7 @@ export function PerformanceView({ data }: { data: any }) {
                 <YAxis dataKey="feature" type="category" axisLine={false} tickLine={false} tick={{fill: '#f1f5f9', fontSize: 11}} width={90} />
                 <Tooltip cursor={{fill: 'rgba(255,255,255,0.05)'}} contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', borderRadius: '8px', color: '#f1f5f9' }} />
                 <Bar dataKey="importance" radius={[0, 4, 4, 0]} barSize={20}>
-                  {featureImportanceData?.map((_: any, index: number) => (
+                  {featureImportanceData?.map((_, index) => (
                     <Cell key={`cell-${index}`} fill="#3b82f6" opacity={1 - (index * 0.15)} />
                   ))}
                 </Bar>
@@ -141,7 +142,7 @@ export function PerformanceView({ data }: { data: any }) {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
-                  {Object.entries(perClassMetrics || {}).map(([cls, metrics]: [string, any]) => (
+                  {Object.entries(perClassMetrics || {}).map(([cls, metrics]) => (
                     <tr key={cls} className="hover:bg-white/5 transition-colors">
                       <td className="py-3 px-6 font-medium text-foreground">{cls}</td>
                       <td className="py-3 px-6 text-right font-mono">{formatPercentage(metrics.precision)}</td>

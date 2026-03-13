@@ -1,16 +1,6 @@
 import { useGetEdaStats, usePredictWeather } from "@workspace/api-client-react";
-import { safelyCast } from "@/lib/utils";
 
-// Types for our typed UI mappings
-export interface MonthlyStat {
-  month: string;
-  Temp_C: number;
-  "Dew Point Temp_C": number;
-  "Rel Hum_%": number;
-  "Wind Speed_km/h": number;
-  Visibility_km: number;
-  Press_kPa: number;
-}
+const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export interface ClassDist {
   name: string;
@@ -29,44 +19,72 @@ export interface ClassMetric {
   support: number;
 }
 
+interface MonthlyStatRaw {
+  Temp_C: number;
+  "Dew Point Temp_C": number;
+  "Rel Hum_%": number;
+  "Wind Speed_km/h": number;
+  Visibility_km: number;
+  Press_kPa: number;
+}
+
+interface ModelMetrics {
+  test_accuracy: number;
+  cv_accuracy: number;
+  best_params: { n_estimators?: number; max_depth?: number | null };
+  per_class_metrics: Record<string, ClassMetric>;
+  confusion_matrix: number[][];
+  class_labels: string[];
+}
+
+interface ScatterPoint {
+  temp: number;
+  humidity: number;
+  weather: string;
+}
+
+interface ScatterRaw {
+  Temp_C: number;
+  "Rel Hum_%": number;
+  Weather_Grouped: string;
+}
+
+function asRecord<T>(val: unknown): T {
+  return val as T;
+}
+
 export function useDashboardData() {
   const { data, isLoading, error } = useGetEdaStats();
 
   if (!data) return { data: null, isLoading, error };
 
-  // Transform data for charts
   const classDistData: ClassDist[] = Object.entries(data.class_distribution || {})
     .map(([name, value]) => ({ name, value }))
     .sort((a, b) => b.value - a.value);
 
-  const rawMonthly = safelyCast<Record<string, MonthlyStat>>(data.monthly_stats || {});
+  const rawMonthly = asRecord<Record<string, MonthlyStatRaw>>(data.monthly_stats || {});
   const monthlyData = Object.keys(rawMonthly)
     .sort((a, b) => parseInt(a) - parseInt(b))
-    .map((m) => ({
-      month: [
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-      ][parseInt(m) - 1],
-      ...rawMonthly[m],
-    }));
+    .map((m) => {
+      const { ...stats } = rawMonthly[m];
+      return { ...stats, month: MONTH_NAMES[parseInt(m) - 1] };
+    });
 
   const featureImportanceData: FeatureImportance[] = Object.entries(data.feature_importances || {})
     .map(([feature, importance]) => ({ feature, importance }))
     .sort((a, b) => b.importance - a.importance);
 
-  const rawMetrics = safelyCast<Record<string, any>>(data.model_metrics || {});
-  const perClassMetrics = safelyCast<Record<string, ClassMetric>>(rawMetrics.per_class_metrics || {});
+  const metrics = asRecord<ModelMetrics>(data.model_metrics || {});
+  const perClassMetrics = metrics.per_class_metrics || {};
+  const corrMatrix = asRecord<Record<string, Record<string, number>>>(data.correlation_matrix || {});
+  const confusionMatrix = metrics.confusion_matrix || [];
+  const classLabels = metrics.class_labels || [];
 
-  const corrMatrix = safelyCast<Record<string, Record<string, number>>>(data.correlation_matrix || {});
-  
-  const confusionMatrix = safelyCast<number[][]>(rawMetrics.confusion_matrix || []);
-  const classLabels = safelyCast<string[]>(rawMetrics.class_labels || []);
-
-  const rawScatter = safelyCast<any[]>(data.scatter_data || []);
-  const scatterData = rawScatter.map((d: any) => ({
-    temp: Number(d["Temp_C"] ?? d.Temp_C ?? 0),
+  const rawScatter = asRecord<ScatterRaw[]>(data.scatter_data || []);
+  const scatterData: ScatterPoint[] = rawScatter.map((d) => ({
+    temp: Number(d.Temp_C ?? 0),
     humidity: Number(d["Rel Hum_%"] ?? 0),
-    weather: d["Weather_Grouped"] ?? d.Weather_Grouped ?? "Unknown",
+    weather: d.Weather_Grouped ?? "Unknown",
   }));
 
   return {
@@ -80,14 +98,16 @@ export function useDashboardData() {
       confusionMatrix,
       classLabels,
       scatterData,
-      testAccuracy: rawMetrics.test_accuracy || 0,
-      cvAccuracy: rawMetrics.cv_accuracy || 0,
-      bestParams: rawMetrics.best_params || {},
+      testAccuracy: metrics.test_accuracy || 0,
+      cvAccuracy: metrics.cv_accuracy || 0,
+      bestParams: metrics.best_params || {},
     },
     isLoading,
     error,
   };
 }
+
+export type DashboardData = NonNullable<ReturnType<typeof useDashboardData>["data"]>;
 
 export function useWeatherPrediction() {
   return usePredictWeather();
