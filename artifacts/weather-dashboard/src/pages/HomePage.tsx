@@ -66,32 +66,43 @@ const itemVariants = {
 export function HomePage() {
   const { data } = useDashboardData();
 
+  const monthlyData = data?.monthlyData || [];
+  const temps = monthlyData.map((m) => m.Temp_C);
+  const minTemp = temps.length ? Math.min(...temps).toFixed(1) : "N/A";
+  const maxTemp = temps.length ? Math.max(...temps).toFixed(1) : "N/A";
+  const avgHumidity = monthlyData.length
+    ? (monthlyData.reduce((s, m) => s + (m["Rel Hum_%"] || 0), 0) / monthlyData.length).toFixed(0)
+    : "N/A";
+  const avgWind = monthlyData.length
+    ? (monthlyData.reduce((s, m) => s + (m["Wind Speed_km/h"] || 0), 0) / monthlyData.length).toFixed(1)
+    : "N/A";
+
   const stats = [
     {
       icon: Database,
       label: "Total Records",
-      value: data?.datasetInfo?.total_rows?.toLocaleString() || "8,784",
+      value: data?.datasetInfo?.total_rows?.toLocaleString() || "N/A",
       color: "text-blue-400",
       bg: "bg-blue-500/20",
     },
     {
       icon: Thermometer,
       label: "Temp Range",
-      value: "-33°C to 33°C",
+      value: `${minTemp}°C to ${maxTemp}°C`,
       color: "text-red-400",
       bg: "bg-red-500/20",
     },
     {
       icon: Droplets,
       label: "Avg Humidity",
-      value: "67%",
+      value: `${avgHumidity}%`,
       color: "text-cyan-400",
       bg: "bg-cyan-500/20",
     },
     {
       icon: Wind,
-      label: "Weather Classes",
-      value: "8",
+      label: "Avg Wind Speed",
+      value: `${avgWind} km/h`,
       color: "text-emerald-400",
       bg: "bg-emerald-500/20",
     },
@@ -126,8 +137,9 @@ export function HomePage() {
               </span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-              Explore 8,784 hourly weather records, discover patterns through EDA, predict
-              weather conditions with a Random Forest classifier achieving{" "}
+              Explore {data?.datasetInfo?.total_rows?.toLocaleString() || "8,784"} hourly
+              weather records, discover patterns through EDA, predict weather conditions
+              with a Random Forest classifier achieving{" "}
               <span className="text-primary font-semibold">77.6% accuracy</span>, and
               evaluate model performance — all in one platform.
             </p>

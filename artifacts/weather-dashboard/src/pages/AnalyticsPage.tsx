@@ -80,6 +80,9 @@ export function AnalyticsPage() {
         monthly.reduce((sum, m) => sum + (m["Wind Speed_km/h"] || 0), 0) / monthly.length
       ).toFixed(1)
     : "N/A";
+  const mostHumidMonth = monthly.length
+    ? monthly.reduce((prev, curr) => ((curr["Rel Hum_%"] || 0) > (prev["Rel Hum_%"] || 0) ? curr : prev))
+    : null;
 
   const pieData = classDist.map((d, i) => ({
     ...d,
@@ -112,13 +115,13 @@ export function AnalyticsPage() {
               <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
                 <Thermometer className="w-5 h-5" />
               </div>
-              <span className="text-sm text-muted-foreground font-medium">Hottest Month</span>
+              <span className="text-sm text-muted-foreground font-medium">Warmest Month</span>
             </div>
             <p className="text-2xl font-bold font-mono">
               {hottestMonth ? `${hottestMonth.Temp_C.toFixed(1)}°C` : "N/A"}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              {hottestMonth?.month || ""}
+              {hottestMonth ? `${hottestMonth.month} (avg)` : ""}
             </p>
           </CardContent>
         </Card>
@@ -135,7 +138,7 @@ export function AnalyticsPage() {
               {coldestMonth ? `${coldestMonth.Temp_C.toFixed(1)}°C` : "N/A"}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              {coldestMonth?.month || ""}
+              {coldestMonth ? `${coldestMonth.month} (avg)` : ""}
             </p>
           </CardContent>
         </Card>

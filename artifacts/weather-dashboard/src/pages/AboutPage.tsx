@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useDashboardData } from "@/hooks/use-weather-data";
 import {
   Database,
   Brain,
@@ -86,6 +87,12 @@ const itemVariants = {
 };
 
 export function AboutPage() {
+  const { data } = useDashboardData();
+  const totalRows = data?.datasetInfo?.total_rows?.toLocaleString() || "8,784";
+  const totalCols = data?.datasetInfo?.total_columns ?? 13;
+  const numClasses = data?.classDistData?.length ?? 8;
+  const numFeatures = data?.datasetInfo?.feature_columns?.length ?? 10;
+
   const categoryColors: Record<string, string> = {
     Frontend: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     Backend: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
@@ -114,8 +121,8 @@ export function AboutPage() {
           <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
             A complete end-to-end machine learning project that combines data science (EDA),
             predictive modeling (Random Forest with GridSearchCV), and a professional
-            full-stack web application. Built to classify weather conditions into 8 categories
-            from hourly sensor readings.
+            full-stack web application. Built to classify weather conditions into {numClasses} categories
+            from {totalRows} hourly sensor readings.
           </p>
         </div>
       </section>
@@ -127,10 +134,10 @@ export function AboutPage() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { label: "Records", value: "8,784", desc: "hourly observations" },
-            { label: "Features", value: "13", desc: "original columns" },
-            { label: "Weather Classes", value: "8", desc: "target categories" },
-            { label: "Model Inputs", value: "10", desc: "engineered features" },
+            { label: "Records", value: totalRows, desc: "hourly observations" },
+            { label: "Features", value: String(totalCols), desc: "original columns" },
+            { label: "Weather Classes", value: String(numClasses), desc: "target categories" },
+            { label: "Model Inputs", value: String(numFeatures), desc: "engineered features" },
           ].map((item) => (
             <Card key={item.label}>
               <CardContent className="p-5 text-center">
