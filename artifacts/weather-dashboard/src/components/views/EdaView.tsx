@@ -183,7 +183,12 @@ export function EdaView({ data }: { data: DashboardData }) {
                   cursor={{strokeDasharray: '3 3'}}
                   contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', borderRadius: '8px', color: '#f1f5f9' }}
                 />
-                <Scatter name="Weather" data={data.scatterData} fill="#3b82f6" opacity={0.6} />
+                <Scatter name="Weather" data={data.scatterData}>
+                  {data.scatterData?.map((entry, index) => {
+                    const hash = (entry.weather || "").split('').reduce((a: number, b: string) => a + b.charCodeAt(0), 0);
+                    return <Cell key={`cell-${index}`} fill={COLORS[hash % COLORS.length]} opacity={0.7} />;
+                  })}
+                </Scatter>
               </ScatterChart>
             </ResponsiveContainer>
           </CardContent>
