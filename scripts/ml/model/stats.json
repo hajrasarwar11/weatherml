@@ -23,6 +23,12 @@
       "Press_kPa"
     ]
   },
+  "record_extremes": {
+    "max_temp": 33.0,
+    "max_temp_month": 6,
+    "min_temp": -23.3,
+    "min_temp_month": 1
+  },
   "class_distribution": {
     "Cloudy": 3797,
     "Clear": 3432,

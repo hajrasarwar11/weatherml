@@ -229,6 +229,15 @@ scatter_sample = df.sample(min(500, len(df)), random_state=42)[['Temp_C', 'Rel H
 hourly_dist = df.groupby(['Hour', 'Weather_Grouped']).size().reset_index(name='count')
 hourly_dict = hourly_dist.to_dict(orient='records')
 
+max_temp_idx = df['Temp_C'].idxmax()
+min_temp_idx = df['Temp_C'].idxmin()
+record_extremes = {
+    'max_temp': float(df.loc[max_temp_idx, 'Temp_C']),
+    'max_temp_month': int(df.loc[max_temp_idx, 'Month']),
+    'min_temp': float(df.loc[min_temp_idx, 'Temp_C']),
+    'min_temp_month': int(df.loc[min_temp_idx, 'Month']),
+}
+
 stats = {
     'dataset_info': {
         'total_rows': int(df.shape[0]),
@@ -236,6 +245,7 @@ stats = {
         'feature_columns': feature_cols,
         'numeric_columns': numeric_cols,
     },
+    'record_extremes': record_extremes,
     'class_distribution': class_dist,
     'monthly_stats': monthly_stats_dict,
     'correlation_matrix': corr_dict,

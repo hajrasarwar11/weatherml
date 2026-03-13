@@ -107,6 +107,7 @@ export function useDashboardData() {
       testAccuracy: metrics.test_accuracy || 0,
       cvAccuracy: metrics.cv_accuracy || 0,
       bestParams: metrics.best_params || {},
+      recordExtremes: ((data as unknown as Record<string, unknown>).record_extremes as { max_temp: number; max_temp_month: number; min_temp: number; min_temp_month: number } | undefined) ?? null,
     },
     isLoading,
     error,

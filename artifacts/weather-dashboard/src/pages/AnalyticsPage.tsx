@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDashboardData } from "@/hooks/use-weather-data";
+
+const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 import {
   BarChart,
   Bar,
@@ -61,13 +63,7 @@ export function AnalyticsPage() {
 
   const monthly = data.monthlyData || [];
   const classDist = data.classDistData || [];
-
-  const hottestMonth = monthly.length
-    ? monthly.reduce((prev, curr) => (curr.Temp_C > prev.Temp_C ? curr : prev))
-    : null;
-  const coldestMonth = monthly.length
-    ? monthly.reduce((prev, curr) => (curr.Temp_C < prev.Temp_C ? curr : prev))
-    : null;
+  const extremes = data.recordExtremes;
   const avgHumidity = monthly.length
     ? (
         monthly.reduce((sum, m) => sum + (m["Rel Hum_%"] || 0), 0) / monthly.length
@@ -78,10 +74,6 @@ export function AnalyticsPage() {
         monthly.reduce((sum, m) => sum + (m["Wind Speed_km/h"] || 0), 0) / monthly.length
       ).toFixed(1)
     : "N/A";
-  const mostHumidMonth = monthly.length
-    ? monthly.reduce((prev, curr) => ((curr["Rel Hum_%"] || 0) > (prev["Rel Hum_%"] || 0) ? curr : prev))
-    : null;
-
   const pieData = classDist;
 
   const totalRecords = classDist.reduce((sum, d) => sum + d.value, 0);
@@ -110,13 +102,13 @@ export function AnalyticsPage() {
               <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
                 <Thermometer className="w-5 h-5" />
               </div>
-              <span className="text-sm text-muted-foreground font-medium">Warmest Month</span>
+              <span className="text-sm text-muted-foreground font-medium">Hottest Recorded</span>
             </div>
             <p className="text-2xl font-bold font-mono">
-              {hottestMonth ? `${hottestMonth.Temp_C.toFixed(1)}°C` : "N/A"}
+              {extremes ? `${extremes.max_temp.toFixed(1)}°C` : "N/A"}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              {hottestMonth ? `${hottestMonth.month} (avg)` : ""}
+              {extremes ? `in ${MONTH_NAMES[extremes.max_temp_month - 1]}` : ""}
             </p>
           </CardContent>
         </Card>
@@ -127,13 +119,13 @@ export function AnalyticsPage() {
               <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
                 <ThermometerSnowflake className="w-5 h-5" />
               </div>
-              <span className="text-sm text-muted-foreground font-medium">Coldest Month</span>
+              <span className="text-sm text-muted-foreground font-medium">Coldest Recorded</span>
             </div>
             <p className="text-2xl font-bold font-mono">
-              {coldestMonth ? `${coldestMonth.Temp_C.toFixed(1)}°C` : "N/A"}
+              {extremes ? `${extremes.min_temp.toFixed(1)}°C` : "N/A"}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              {coldestMonth ? `${coldestMonth.month} (avg)` : ""}
+              {extremes ? `in ${MONTH_NAMES[extremes.min_temp_month - 1]}` : ""}
             </p>
           </CardContent>
         </Card>
