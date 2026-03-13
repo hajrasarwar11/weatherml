@@ -76,10 +76,6 @@ const futureScope = [
   "Export predictions and reports as downloadable PDF",
   "Historical trend analysis with custom date-range selectors",
   "Multi-region support — save and compare multiple cities",
-  "Weather pattern anomaly detection using unsupervised clustering",
-  "Push notifications for severe weather alerts",
-  "User-configurable dashboard with saved preferences",
-  "Mobile app (React Native) with offline ML inference",
 ];
 
 const containerVariants = {

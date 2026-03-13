@@ -20,7 +20,7 @@ export function Footer() {
           </div>
 
           <p className="text-xs text-muted-foreground text-center sm:text-right">
-            &copy; {new Date().getFullYear()} WeatherML. All Rights Reserved.
+            &copy; 2026 WeatherML. All Rights Reserved.
           </p>
         </div>
       </div>

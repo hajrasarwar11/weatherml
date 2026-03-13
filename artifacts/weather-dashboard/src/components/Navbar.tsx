@@ -18,19 +18,34 @@ import {
   Mail,
 } from "lucide-react";
 
-const navItems = [
-  { path: "/", label: "Home", icon: Home },
-  { path: "/eda", label: "EDA", icon: BarChart3 },
-  { path: "/analytics", label: "Analytics", icon: TrendingUp },
-  { path: "/predict", label: "Prediction", icon: Zap },
-  { path: "/performance", label: "Performance", icon: Activity },
-  { path: "/dashboard", label: "Live Weather", icon: Gauge },
-  { path: "/forecast", label: "Forecast", icon: Calendar },
-  { path: "/map", label: "Map", icon: Map },
-  { path: "/alerts", label: "Alerts", icon: Bell },
+const navGroups = [
+  {
+    label: "ML Analytics",
+    items: [
+      { path: "/", label: "Home", icon: Home },
+      { path: "/eda", label: "EDA", icon: BarChart3 },
+      { path: "/analytics", label: "Analytics", icon: TrendingUp },
+      { path: "/predict", label: "Prediction", icon: Zap },
+      { path: "/performance", label: "Performance", icon: Activity },
+    ],
+  },
+  {
+    label: "Live Weather",
+    items: [
+      { path: "/dashboard", label: "Live Weather", icon: Gauge },
+      { path: "/forecast", label: "Forecast", icon: Calendar },
+      { path: "/map", label: "Map", icon: Map },
+      { path: "/alerts", label: "Alerts", icon: Bell },
+    ],
+  },
+];
+
+const extraItems = [
   { path: "/about", label: "About", icon: Info },
   { path: "/contact", label: "Contact", icon: Mail },
 ];
+
+const allItems = [...navGroups.flatMap((g) => g.items), ...extraItems];
 
 export function Navbar() {
   const [location] = useLocation();
@@ -58,7 +73,43 @@ export function Navbar() {
             className="hidden xl:flex items-center gap-0.5 p-1 bg-card/60 border border-border/40 rounded-xl backdrop-blur-md overflow-x-auto"
             aria-label="Main navigation"
           >
-            {navItems.map((item) => {
+            {navGroups.map((group, gi) => (
+              <div key={group.label} className="flex items-center gap-0.5">
+                {gi > 0 && (
+                  <div className="w-px h-5 bg-border/50 mx-1" />
+                )}
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location === item.path;
+                  return (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      className={`relative flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg transition-colors outline-none whitespace-nowrap focus-visible:ring-2 focus-visible:ring-primary/60 ${
+                        isActive
+                          ? "text-white"
+                          : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="navbar-active"
+                          className="absolute inset-0 bg-primary rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                      <span className="relative z-10 flex items-center gap-1.5">
+                        <Icon className="w-3.5 h-3.5" />
+                        <span>{item.label}</span>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
+            <div className="w-px h-5 bg-border/50 mx-1" />
+            {extraItems.map((item) => {
               const Icon = item.icon;
               const isActive = location === item.path;
               return (
@@ -92,7 +143,45 @@ export function Navbar() {
             className="hidden lg:flex xl:hidden items-center gap-0.5 p-1 bg-card/60 border border-border/40 rounded-xl backdrop-blur-md"
             aria-label="Main navigation"
           >
-            {navItems.map((item) => {
+            {navGroups.map((group, gi) => (
+              <div key={group.label} className="flex items-center gap-0.5">
+                {gi > 0 && (
+                  <div className="w-px h-5 bg-border/50 mx-1" />
+                )}
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location === item.path;
+                  return (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      title={item.label}
+                      className={`relative flex items-center gap-1 px-2 py-1.5 text-xs font-medium rounded-lg transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ${
+                        isActive
+                          ? "text-white"
+                          : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
+                      aria-label={item.label}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="navbar-active-md"
+                          className="absolute inset-0 bg-primary rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                      <span className="relative z-10 flex items-center gap-1">
+                        <Icon className="w-4 h-4" />
+                        {isActive && <span className="text-[11px]">{item.label}</span>}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
+            <div className="w-px h-5 bg-border/50 mx-1" />
+            {extraItems.map((item) => {
               const Icon = item.icon;
               const isActive = location === item.path;
               return (
@@ -144,29 +233,60 @@ export function Navbar() {
             className="lg:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl overflow-hidden"
           >
             <nav
-              className="max-w-[1600px] mx-auto px-4 py-3 grid grid-cols-2 sm:grid-cols-3 gap-1"
+              className="max-w-[1600px] mx-auto px-4 py-3 space-y-3"
               aria-label="Mobile navigation"
             >
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = location === item.path;
-                return (
-                  <Link
-                    key={item.path}
-                    href={item.path}
-                    onClick={() => setMobileOpen(false)}
-                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-primary/60 outline-none ${
-                      isActive
-                        ? "bg-primary text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]"
-                        : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                    }`}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    <Icon className="w-4 h-4 shrink-0" />
-                    <span className="truncate">{item.label}</span>
-                  </Link>
-                );
-              })}
+              {navGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest px-3 mb-1.5">
+                    {group.label}
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
+                    {group.items.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = location === item.path;
+                      return (
+                        <Link
+                          key={item.path}
+                          href={item.path}
+                          onClick={() => setMobileOpen(false)}
+                          className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-primary/60 outline-none ${
+                            isActive
+                              ? "bg-primary text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                              : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                          }`}
+                          aria-current={isActive ? "page" : undefined}
+                        >
+                          <Icon className="w-4 h-4 shrink-0" />
+                          <span className="truncate">{item.label}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+              <div className="border-t border-border/30 pt-2 grid grid-cols-2 sm:grid-cols-3 gap-1">
+                {extraItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location === item.path;
+                  return (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={() => setMobileOpen(false)}
+                      className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-primary/60 outline-none ${
+                        isActive
+                          ? "bg-primary text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                          : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      <Icon className="w-4 h-4 shrink-0" />
+                      <span className="truncate">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </nav>
           </motion.div>
         )}
