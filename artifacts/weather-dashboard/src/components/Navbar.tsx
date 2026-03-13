@@ -11,14 +11,22 @@ import {
   Info,
   Menu,
   X,
+  Gauge,
+  Calendar,
+  Map,
+  Bell,
 } from "lucide-react";
 
 const navItems = [
   { path: "/", label: "Home", icon: Home },
   { path: "/eda", label: "EDA Explorer", icon: BarChart3 },
   { path: "/analytics", label: "Analytics", icon: TrendingUp },
-  { path: "/predict", label: "Live Prediction", icon: Zap },
-  { path: "/performance", label: "Model Performance", icon: Activity },
+  { path: "/predict", label: "Prediction", icon: Zap },
+  { path: "/performance", label: "Performance", icon: Activity },
+  { path: "/dashboard", label: "Live Weather", icon: Gauge },
+  { path: "/forecast", label: "Forecast", icon: Calendar },
+  { path: "/map", label: "Map", icon: Map },
+  { path: "/alerts", label: "Alerts", icon: Bell },
   { path: "/about", label: "About", icon: Info },
 ];
 

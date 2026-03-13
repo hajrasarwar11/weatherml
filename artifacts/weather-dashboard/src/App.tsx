@@ -10,6 +10,10 @@ import { AnalyticsPage } from "@/pages/AnalyticsPage";
 import { PredictPage } from "@/pages/PredictPage";
 import { PerformancePage } from "@/pages/PerformancePage";
 import { AboutPage } from "@/pages/AboutPage";
+import { WeatherDashboardPage } from "@/pages/WeatherDashboardPage";
+import { ForecastPage } from "@/pages/ForecastPage";
+import { WeatherMapPage } from "@/pages/WeatherMapPage";
+import { AlertsPage } from "@/pages/AlertsPage";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -29,6 +33,10 @@ function Router() {
       <Route path="/analytics" component={AnalyticsPage} />
       <Route path="/predict" component={PredictPage} />
       <Route path="/performance" component={PerformancePage} />
+      <Route path="/dashboard" component={WeatherDashboardPage} />
+      <Route path="/forecast" component={ForecastPage} />
+      <Route path="/map" component={WeatherMapPage} />
+      <Route path="/alerts" component={AlertsPage} />
       <Route path="/about" component={AboutPage} />
       <Route component={NotFound} />
     </Switch>
