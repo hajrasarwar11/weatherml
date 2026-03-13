@@ -65,10 +65,15 @@ artifacts-monorepo/
 
 ### Dashboard (`artifacts/weather-dashboard/`)
 
-React + Vite dark-mode dashboard with 3 tabs:
-1. **EDA Explorer** — Dataset stats cards, weather class distribution bar chart, monthly temp line chart, temp vs humidity scatter plot, correlation heatmap
-2. **Live Predictor** — 6 sliders for sensor inputs, predict button, animated result display with confidence and class probabilities
-3. **Model Performance** — Test/CV accuracy hero card, top features bar chart, confusion matrix grid, classification report table
+React + Vite dark-mode multi-page application with full navigation:
+- **Home** (`/`) — Hero section, quick stats cards, platform feature highlights
+- **EDA Explorer** (`/eda`) — Dataset stats cards, weather class distribution bar chart, monthly temp line chart, temp vs humidity scatter plot, correlation heatmap
+- **Analytics** (`/analytics`) — Hottest/coldest month, avg humidity/wind stats, weather type frequency pie chart, monthly temp/humidity bar charts, temperature trend area chart, wind/visibility line chart, pressure trend
+- **Live Prediction** (`/predict`) — 6 sliders for sensor inputs, predict button, animated result display with confidence and class probabilities
+- **Model Performance** (`/performance`) — Test/CV accuracy hero card, top features bar chart, confusion matrix grid, classification report table
+- **About** (`/about`) — Project description, dataset details, ML pipeline steps, tech stack badges, future scope
+- **Footer** — Social links (Instagram/Facebook/Twitter @hlofaam) on every page
+- **Navbar** — Persistent top navigation with mobile hamburger menu
 
 ## TypeScript & Composite Projects
 
@@ -98,9 +103,10 @@ Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` 
 
 React + Vite dark-mode dashboard for weather ML project. Uses `@workspace/api-client-react` for API hooks.
 
-- Entry: `src/App.tsx` — React Query provider + routing
-- Main page: `src/pages/Dashboard.tsx` — 3-tab layout
+- Entry: `src/App.tsx` — React Query provider + wouter routing + Navbar + Footer
+- Pages: `src/pages/HomePage.tsx`, `EdaPage.tsx`, `AnalyticsPage.tsx`, `PredictPage.tsx`, `PerformancePage.tsx`, `AboutPage.tsx`
 - Views: `src/components/views/EdaView.tsx`, `PredictView.tsx`, `PerformanceView.tsx`
+- Layout: `src/components/Navbar.tsx`, `src/components/Footer.tsx`
 - Data hooks: `src/hooks/use-weather-data.ts`
 
 ### `lib/db` (`@workspace/db`)
