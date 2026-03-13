@@ -234,8 +234,9 @@ export function AlertsPage() {
             <CardContent className="p-5">
               <p className="text-xs text-muted-foreground text-center">
                 Alerts are derived from current weather conditions using rule-based thresholds.
-                Fog: visibility &lt; 1 km | High wind: &gt; 80 km/h | Extreme cold: &lt; −20 °C |
-                Heat: &gt; 35 °C | Low pressure: &lt; 980 hPa | Thunderstorm / freezing rain when detected.
+                Fog: visibility &lt; 1 km | Storm wind: &gt; 60 km/h | Extreme humidity: &gt; 90% |
+                Extreme cold: &lt; −20 °C | Heat: &gt; 35 °C | Low pressure: &lt; 1000 hPa (100 kPa) |
+                Thunderstorm / freezing rain when detected.
               </p>
             </CardContent>
           </Card>
