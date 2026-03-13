@@ -6,7 +6,6 @@ const socialLinks = [
   {
     icon: Instagram,
     label: "Instagram",
-    handle: "@hlofaam",
     href: "https://instagram.com/hlofaam",
     color: "from-pink-500/20 to-rose-500/20",
     iconColor: "text-pink-400",
@@ -16,7 +15,6 @@ const socialLinks = [
   {
     icon: Facebook,
     label: "Facebook",
-    handle: "@hlofaam",
     href: "https://facebook.com/hlofaam",
     color: "from-blue-500/20 to-blue-600/20",
     iconColor: "text-blue-400",
@@ -26,7 +24,6 @@ const socialLinks = [
   {
     icon: Twitter,
     label: "Twitter / X",
-    handle: "@hlofaam",
     href: "https://twitter.com/hlofaam",
     color: "from-sky-500/20 to-cyan-500/20",
     iconColor: "text-sky-400",
@@ -109,9 +106,6 @@ export function ContactPage() {
                           <h3 className="font-display font-bold text-foreground text-lg">
                             {link.label}
                           </h3>
-                          <p className={`text-sm font-medium mt-0.5 ${link.iconColor}`}>
-                            {link.handle}
-                          </p>
                           <p className="text-xs text-muted-foreground mt-2">
                             {link.description}
                           </p>
