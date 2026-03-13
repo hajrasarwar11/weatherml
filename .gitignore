@@ -64,3 +64,11 @@ attached_assets/
 
 # OS
 .DS_Store
+
+# Platform config (not relevant to project)
+.replit
+.replitignore
+replit.md
+.agents/
+.replit-artifact/
+**/.replit-artifact/
