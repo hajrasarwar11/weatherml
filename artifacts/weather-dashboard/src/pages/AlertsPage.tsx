@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Loader2,
@@ -12,17 +13,38 @@ import {
   ThermometerSnowflake,
   ShieldAlert,
   CheckCircle,
+  Zap,
 } from "lucide-react";
-import { useApiKeyStatus, useCurrentWeather } from "@/hooks/use-live-weather";
+import { useApiKeyStatus } from "@/hooks/use-live-weather";
 import { ApiKeyMissing } from "@/components/ApiKeyMissing";
 import { CitySearch } from "@/components/CitySearch";
 
-interface WeatherAlert {
+const API_BASE = `${import.meta.env.BASE_URL}api`.replace(/\/\//g, "/");
+
+interface ApiAlert {
   id: string;
   title: string;
   description: string;
   severity: "critical" | "warning" | "info";
-  icon: React.ReactNode;
+}
+
+interface AlertsApiResponse {
+  city: string;
+  country: string;
+  alerts: ApiAlert[];
+  allClear: boolean;
+}
+
+function getAlertIcon(id: string, title: string): React.ReactNode {
+  const lower = id + " " + title.toLowerCase();
+  if (lower.includes("fog") || lower.includes("vis")) return <CloudFog className="w-6 h-6" />;
+  if (lower.includes("wind") || lower.includes("storm")) return <Wind className="w-6 h-6" />;
+  if (lower.includes("thunder")) return <Zap className="w-6 h-6" />;
+  if (lower.includes("heat") || lower.includes("sun")) return <ThermometerSun className="w-6 h-6" />;
+  if (lower.includes("cold") || lower.includes("freeze") || lower.includes("ice") || lower.includes("sleet")) return <ThermometerSnowflake className="w-6 h-6" />;
+  if (lower.includes("pressure")) return <Gauge className="w-6 h-6" />;
+  if (lower.includes("humid") || lower.includes("rain")) return <Droplets className="w-6 h-6" />;
+  return <AlertTriangle className="w-6 h-6" />;
 }
 
 function getSeverityStyles(severity: string) {
@@ -51,113 +73,27 @@ function getSeverityStyles(severity: string) {
   }
 }
 
-function deriveAlerts(data: Record<string, unknown>): WeatherAlert[] {
-  const alerts: WeatherAlert[] = [];
-  const main = data.main as Record<string, number>;
-  const wind = data.wind as Record<string, number>;
-  const visibility = data.visibility as number;
-
-  if (visibility < 1000) {
-    alerts.push({
-      id: "fog",
-      title: "Dense Fog Warning",
-      description: `Visibility is extremely low at ${(visibility / 1000).toFixed(2)} km. Exercise caution when driving or traveling.`,
-      severity: "critical",
-      icon: <CloudFog className="w-6 h-6" />,
-    });
-  } else if (visibility < 5000) {
-    alerts.push({
-      id: "low-vis",
-      title: "Low Visibility Advisory",
-      description: `Visibility is reduced to ${(visibility / 1000).toFixed(1)} km. Be cautious during outdoor activities.`,
-      severity: "warning",
-      icon: <CloudFog className="w-6 h-6" />,
-    });
-  }
-
-  const windKmh = (wind?.speed ?? 0) * 3.6;
-  if (windKmh > 60) {
-    alerts.push({
-      id: "storm-wind",
-      title: "Storm Wind Warning",
-      description: `Wind speeds of ${windKmh.toFixed(1)} km/h detected. Secure loose objects and avoid unnecessary travel.`,
-      severity: "critical",
-      icon: <Wind className="w-6 h-6" />,
-    });
-  } else if (windKmh > 40) {
-    alerts.push({
-      id: "high-wind",
-      title: "High Wind Advisory",
-      description: `Wind speeds of ${windKmh.toFixed(1)} km/h. Be cautious of gusts.`,
-      severity: "warning",
-      icon: <Wind className="w-6 h-6" />,
-    });
-  }
-
-  if (main.humidity > 90) {
-    alerts.push({
-      id: "humidity",
-      title: "Extreme Humidity Alert",
-      description: `Humidity level at ${main.humidity}%. May cause discomfort and potential health risks for sensitive individuals.`,
-      severity: "warning",
-      icon: <Droplets className="w-6 h-6" />,
-    });
-  }
-
-  const pressureKpa = main.pressure / 10;
-  if (pressureKpa < 100) {
-    alerts.push({
-      id: "pressure",
-      title: "Low Pressure Alert",
-      description: `Atmospheric pressure at ${pressureKpa.toFixed(1)} kPa indicates an approaching weather system. Expect changing conditions.`,
-      severity: "info",
-      icon: <Gauge className="w-6 h-6" />,
-    });
-  }
-
-  if (main.temp > 35) {
-    alerts.push({
-      id: "heat",
-      title: "Extreme Heat Warning",
-      description: `Temperature at ${Math.round(main.temp)}°C. Stay hydrated and avoid prolonged sun exposure.`,
-      severity: "critical",
-      icon: <ThermometerSun className="w-6 h-6" />,
-    });
-  } else if (main.temp > 30) {
-    alerts.push({
-      id: "heat-advisory",
-      title: "Heat Advisory",
-      description: `Temperature at ${Math.round(main.temp)}°C. Take precautions against heat-related illness.`,
-      severity: "warning",
-      icon: <ThermometerSun className="w-6 h-6" />,
-    });
-  }
-
-  if (main.temp < -20) {
-    alerts.push({
-      id: "extreme-cold",
-      title: "Extreme Cold Warning",
-      description: `Temperature at ${Math.round(main.temp)}°C. Risk of frostbite and hypothermia. Limit outdoor exposure.`,
-      severity: "critical",
-      icon: <ThermometerSnowflake className="w-6 h-6" />,
-    });
-  } else if (main.temp < -10) {
-    alerts.push({
-      id: "cold",
-      title: "Cold Weather Advisory",
-      description: `Temperature at ${Math.round(main.temp)}°C. Dress warmly and protect exposed skin.`,
-      severity: "warning",
-      icon: <ThermometerSnowflake className="w-6 h-6" />,
-    });
-  }
-
-  return alerts;
+function useWeatherAlerts(city: string) {
+  return useQuery<AlertsApiResponse>({
+    queryKey: ["weather-alerts", city],
+    queryFn: async () => {
+      const res = await fetch(`${API_BASE}/weather/alerts?city=${encodeURIComponent(city)}`);
+      const data = await res.json();
+      if (!res.ok) {
+        const msg = data?.message ?? data?.error ?? `HTTP ${res.status}`;
+        throw new Error(msg);
+      }
+      return data as AlertsApiResponse;
+    },
+    retry: false,
+    staleTime: 60_000,
+  });
 }
 
 export function AlertsPage() {
   const [city, setCity] = useState("Toronto");
   const { data: keyStatus, isLoading: keyLoading } = useApiKeyStatus();
-  const { data: current, isLoading, error } = useCurrentWeather(city);
+  const { data, isLoading, error } = useWeatherAlerts(city);
 
   if (keyLoading) {
     return (
@@ -169,7 +105,7 @@ export function AlertsPage() {
 
   if (keyStatus && !keyStatus.configured) return <ApiKeyMissing />;
 
-  const alerts = current ? deriveAlerts(current) : [];
+  const alerts = data?.alerts ?? [];
 
   return (
     <motion.div
@@ -184,7 +120,9 @@ export function AlertsPage() {
             Weather Alerts
           </h1>
           <p className="text-muted-foreground">
-            {current?.name ? `Active alerts for ${current.name}, ${current.sys?.country}` : "Rule-based weather alerts and advisories"}
+            {data?.city
+              ? `Active alerts for ${data.city}, ${data.country}`
+              : "Rule-based weather alerts and advisories"}
           </p>
         </div>
         <CitySearch city={city} onCityChange={setCity} />
@@ -207,7 +145,7 @@ export function AlertsPage() {
         </Card>
       )}
 
-      {current && !isLoading && (
+      {data && !isLoading && (
         <>
           <Card>
             <CardHeader>
@@ -246,7 +184,7 @@ export function AlertsPage() {
                 <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold text-foreground mb-2">All Clear</h3>
                 <p className="text-muted-foreground">
-                  No weather alerts for {current.name}. Conditions are within normal parameters.
+                  No weather alerts for {data.city}. Conditions are within normal parameters.
                 </p>
               </CardContent>
             </Card>
@@ -254,6 +192,7 @@ export function AlertsPage() {
             <div className="space-y-4">
               {alerts.map((alert, i) => {
                 const styles = getSeverityStyles(alert.severity);
+                const icon = getAlertIcon(alert.id, alert.title);
                 return (
                   <motion.div
                     key={alert.id}
@@ -267,7 +206,7 @@ export function AlertsPage() {
                           <div
                             className={`w-12 h-12 rounded-xl ${styles.bg} flex items-center justify-center shrink-0 ${styles.icon}`}
                           >
-                            {alert.icon}
+                            {icon}
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-1">
@@ -295,9 +234,8 @@ export function AlertsPage() {
             <CardContent className="p-5">
               <p className="text-xs text-muted-foreground text-center">
                 Alerts are derived from current weather conditions using rule-based thresholds.
-                Fog warning: visibility &lt; 1 km | Storm warning: wind &gt; 60 km/h |
-                Extreme humidity: &gt; 90% | Low pressure: &lt; 100 kPa |
-                Heat/Cold: based on temperature extremes.
+                Fog: visibility &lt; 1 km | High wind: &gt; 80 km/h | Extreme cold: &lt; −20 °C |
+                Heat: &gt; 35 °C | Low pressure: &lt; 980 hPa | Thunderstorm / freezing rain when detected.
               </p>
             </CardContent>
           </Card>

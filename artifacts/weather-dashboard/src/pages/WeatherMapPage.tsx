@@ -40,32 +40,12 @@ function CityFlyTo({ city }: { city: string }) {
   return null;
 }
 
-function WeatherOverlay({ layer }: { layer: string }) {
-  const [tileUrl, setTileUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchTileKey() {
-      try {
-        const res = await fetch(`${API_BASE}/weather/tile-key`);
-        const data = await res.json();
-        if (data.key) {
-          setTileUrl(`https://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${data.key}`);
-        }
-      } catch {
-        /* ignore */
-      }
-    }
-    fetchTileKey();
-  }, [layer]);
-
-  if (!tileUrl) return null;
-  return <TileLayer url={tileUrl} opacity={0.6} />;
-}
-
 export function WeatherMapPage() {
   const [city, setCity] = useState("Toronto");
   const [activeLayer, setActiveLayer] = useState<string>("temp_new");
   const { data: keyStatus, isLoading: keyLoading } = useApiKeyStatus();
+
+  const tileProxyUrl = `${API_BASE}/weather/tiles/${activeLayer}/{z}/{x}/{y}`;
 
   if (keyLoading) {
     return (
@@ -123,10 +103,13 @@ export function WeatherMapPage() {
             style={{ background: "#0f172a" }}
           >
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              attribution='Map tiles by <a href="https://carto.com">CartoDB</a>. Weather overlays by <a href="https://openweathermap.org">OpenWeatherMap</a>.'
               url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
             />
-            <WeatherOverlay layer={activeLayer} />
+            <TileLayer
+              url={tileProxyUrl}
+              opacity={0.6}
+            />
             <CityFlyTo city={city} />
           </MapContainer>
         </CardContent>
