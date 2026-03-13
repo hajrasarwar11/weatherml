@@ -54,6 +54,7 @@ interface DatasetInfo {
   total_columns: number;
   feature_columns: string[];
   numeric_columns: string[];
+  target_column?: string;
 }
 
 export function useDashboardData() {

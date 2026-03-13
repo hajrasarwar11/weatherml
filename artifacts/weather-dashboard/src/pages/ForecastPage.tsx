@@ -29,6 +29,14 @@ function getWeatherIconUrl(icon: string) {
 
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+interface HourlyItem {
+  dt: number;
+  temp: number;
+  humidity: number;
+  wind_speed?: number;
+  weather?: Array<{ description: string }>;
+}
+
 interface DailyItem {
   dt: number;
   temp: { day: number; min: number; max: number; night: number; eve: number; morn: number };
@@ -136,13 +144,30 @@ export function ForecastPage() {
   const selectedDaily = useDaily ? dailyItems[selectedDay] : null;
   const selectedFallback = !useDaily && fallbackDays.length > 0 ? fallbackDays[selectedDay] : null;
 
+  const allHourly: HourlyItem[] = Array.isArray(dailyData?.hourly)
+    ? (dailyData.hourly as HourlyItem[])
+    : [];
+
+  const selectedDayDateStr = selectedDaily
+    ? new Date(selectedDaily.dt * 1000).toISOString().split("T")[0]
+    : null;
+
+  const dayHourly = selectedDayDateStr
+    ? allHourly.filter((h) => new Date(h.dt * 1000).toISOString().startsWith(selectedDayDateStr))
+    : [];
+
   const tempBarData = selectedDaily
-    ? [
-        { label: "Morn", temp: Math.round(selectedDaily.temp.morn) },
-        { label: "Day", temp: Math.round(selectedDaily.temp.day) },
-        { label: "Eve", temp: Math.round(selectedDaily.temp.eve) },
-        { label: "Night", temp: Math.round(selectedDaily.temp.night) },
-      ]
+    ? dayHourly.length > 0
+      ? dayHourly.map((h) => ({
+          label: new Date(h.dt * 1000).toLocaleTimeString("en-US", { hour: "numeric" }),
+          temp: Math.round(h.temp),
+        }))
+      : [
+          { label: "Morn", temp: Math.round(selectedDaily.temp.morn) },
+          { label: "Day", temp: Math.round(selectedDaily.temp.day) },
+          { label: "Eve", temp: Math.round(selectedDaily.temp.eve) },
+          { label: "Night", temp: Math.round(selectedDaily.temp.night) },
+        ]
     : selectedFallback?.hourly.map((h) => ({ label: h.time, temp: h.temp })) ?? [];
 
   return (

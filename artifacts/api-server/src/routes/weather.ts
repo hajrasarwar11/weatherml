@@ -322,7 +322,7 @@ router.get("/weather/daily-forecast", async (req, res) => {
     }
     const { lat, lon, name, country } = geoData[0];
     const oneCallResp = await fetch(
-      `${OWM_BASE}/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&exclude=minutely,hourly,alerts`
+      `${OWM_BASE}/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&exclude=minutely,alerts`
     );
     const oneCallData = (await oneCallResp.json()) as Record<string, unknown>;
     if (!oneCallResp.ok) {

@@ -61,16 +61,17 @@ export function WeatherDashboardPage() {
 
   if (keyStatus && !keyStatus.configured) return <ApiKeyMissing />;
 
-  const hourlyData = forecast?.list?.slice(0, 16).map((item: Record<string, unknown>) => ({
-    time: new Date((item.dt as number) * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-    }),
-    temp: Math.round((item.main as Record<string, number>).temp),
-    humidity: (item.main as Record<string, number>).humidity,
-    feelsLike: Math.round((item.main as Record<string, number>).feels_like),
-    windKmh: Math.round(((item.wind as Record<string, number>)?.speed ?? 0) * 3.6),
-  })) || [];
+  const hourlyData = forecast?.list?.map((item: Record<string, unknown>) => {
+    const dt = new Date((item.dt as number) * 1000);
+    return {
+      time: dt.toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric" }),
+      shortTime: dt.toLocaleTimeString("en-US", { hour: "numeric" }),
+      temp: Math.round((item.main as Record<string, number>).temp),
+      humidity: (item.main as Record<string, number>).humidity,
+      feelsLike: Math.round((item.main as Record<string, number>).feels_like),
+      windKmh: Math.round(((item.wind as Record<string, number>)?.speed ?? 0) * 3.6),
+    };
+  }) || [];
 
   const selectedHour = hourlyData[sliderIndex];
 
@@ -234,7 +235,7 @@ export function WeatherDashboardPage() {
             <Card>
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <CardTitle>Temperature Trend (Next 48 Hours)</CardTitle>
+                  <CardTitle>5-Day Temperature Trend (Forecast)</CardTitle>
                   {selectedHour && (
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4" />
@@ -259,12 +260,12 @@ export function WeatherDashboardPage() {
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                      <XAxis dataKey="time" stroke="#94a3b8" tick={{ fontSize: 10 }} interval={1} />
+                      <XAxis dataKey="shortTime" stroke="#94a3b8" tick={{ fontSize: 10 }} interval={3} />
                       <YAxis stroke="#94a3b8" tick={{ fontSize: 11 }} unit="°" />
                       <Tooltip contentStyle={tooltipStyle} />
                       {selectedHour && (
                         <ReferenceLine
-                          x={selectedHour.time}
+                          x={selectedHour.shortTime}
                           stroke="#a78bfa"
                           strokeWidth={2}
                           strokeDasharray="4 4"
