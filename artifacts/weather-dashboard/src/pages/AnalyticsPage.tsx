@@ -10,8 +10,6 @@ import {
   Tooltip,
   ResponsiveContainer,
   Cell,
-  PieChart,
-  Pie,
   LineChart,
   Line,
   Legend,
@@ -84,10 +82,7 @@ export function AnalyticsPage() {
     ? monthly.reduce((prev, curr) => ((curr["Rel Hum_%"] || 0) > (prev["Rel Hum_%"] || 0) ? curr : prev))
     : null;
 
-  const pieData = classDist.map((d, i) => ({
-    ...d,
-    fill: COLORS[i % COLORS.length],
-  }));
+  const pieData = classDist;
 
   const totalRecords = classDist.reduce((sum, d) => sum + d.value, 0);
 
@@ -180,27 +175,32 @@ export function AnalyticsPage() {
           </CardHeader>
           <CardContent className="h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={pieData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={70}
-                  outerRadius={120}
-                  paddingAngle={3}
-                  dataKey="value"
-                  nameKey="name"
-                  label={({ name, percent }) =>
-                    `${name} ${(percent * 100).toFixed(0)}%`
-                  }
-                  labelLine={{ stroke: "#94a3b8" }}
-                >
-                  {pieData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.fill} />
+              <BarChart
+                data={pieData}
+                layout="vertical"
+                margin={{ top: 10, right: 40, left: 80, bottom: 10 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" horizontal={false} />
+                <XAxis type="number" stroke="#94a3b8" />
+                <YAxis
+                  dataKey="name"
+                  type="category"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#f1f5f9", fontSize: 12 }}
+                  width={80}
+                />
+                <Tooltip
+                  cursor={{ fill: "rgba(255,255,255,0.05)" }}
+                  contentStyle={tooltipStyle}
+                  formatter={(value: number) => [value.toLocaleString(), "Count"]}
+                />
+                <Bar dataKey="value" radius={[0, 6, 6, 0]} barSize={22}>
+                  {pieData.map((_entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
-                </Pie>
-                <Tooltip contentStyle={tooltipStyle} />
-              </PieChart>
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
