@@ -1,0 +1,45 @@
+#4 - Site Polish, Contact Page & Responsiveness
+What & Why
+The site needs several professional improvements before deployment:
+
+Footer simplified — only the WeatherML logo (left) and "All Rights Reserved" copyright (right); social links removed
+New Contact page at /contact with Instagram, Facebook, Twitter icons linking to @hlofaam, and "Created by Hajra" attribution
+EDA Explorer and Analytics pages overlap — EDA shows "Weather Class Distribution" which is duplicated in Analytics; differentiate them clearly so each page has a distinct purpose
+About page: update Future Scope (live weather API, map, forecast, alerts are already built); fix attribution to Hajra; remove anything referencing "Built by @hlofaam"
+Navbar: 10 items is too crowded — organise into two logical groups (ML Analytics, Live Weather) with a responsive hamburger on all screen sizes under a threshold
+Full responsive audit: every page must look excellent on phone (375px), tablet (768px), laptop (1280px), desktop (1440px), large monitor (1920px+)
+Done looks like
+Footer has exactly two sections: WeatherML logo left, copyright right ("© 2026 WeatherML. All Rights Reserved.") — no social icons, no @hlofaam link
+A Contact page exists at /contact in the navbar, showing Instagram/Facebook/Twitter icons (click opens the @hlofaam profile in a new tab) plus "Created by Hajra" text
+EDA Explorer focuses purely on raw data (feature correlations heatmap, numeric distributions, scatter plots, dataset stats) — no class distribution bar chart (that lives only in Analytics)
+Analytics focuses on derived business insights (monthly temperature/humidity/wind trends, weather type frequency, record extremes) — no correlation heatmap
+About page Future Scope list only mentions features that are genuinely future (XGBoost comparison, PDF export, custom date ranges, multi-region support) — removes items already built
+About page credits "Created by Hajra"
+Navbar fits cleanly at every breakpoint: icons + labels on large screens, icon-only on medium, hamburger menu on mobile (≤1024px)
+No horizontal scrolling on any page at 375px width
+All charts and cards reflow correctly at every breakpoint
+Out of scope
+Changing the ML model or data pipeline
+Changing the live weather page functionality
+Adding new API integrations
+Tasks
+Simplify the footer — Remove the middle social-links section and the "Built by @hlofaam" text. Keep WeatherML logo on the left and add clean copyright text on the right.
+
+Create Contact page — Build /contact route and page with social media cards (Instagram, Facebook, Twitter → @hlofaam, opens in new tab), "Created by Hajra" credit, and add it to the Navbar.
+
+De-duplicate EDA vs Analytics — Remove "Weather Class Distribution" chart from EdaView (keep it in Analytics). Give EDA a clear introduction header: "Raw data exploration — feature distributions, correlations, and scatter plots."
+
+Update About page — Rewrite Future Scope to only include genuinely unbuilt items. Replace "Built by @hlofaam" attribution with "Created by Hajra". Remove references to live weather/map/forecast/alerts in future scope since they are now live.
+
+Navbar responsive overhaul — Reduce crowding: keep text labels only on xl screens (≥1280px), show icon+label for active item only on lg, and show hamburger drawer for all screens below lg. Ensure the drawer closes on navigation.
+
+Full responsive audit — Go through every page (Home, EDA, Analytics, Prediction, Performance, About, Contact, Live Weather, Forecast, Map, Alerts) and fix any layout issues at 375px, 768px, 1024px, 1280px, 1440px, 1920px.
+
+Relevant files
+artifacts/weather-dashboard/src/components/Footer.tsx
+artifacts/weather-dashboard/src/components/Navbar.tsx
+artifacts/weather-dashboard/src/components/views/EdaView.tsx
+artifacts/weather-dashboard/src/pages/AboutPage.tsx
+artifacts/weather-dashboard/src/pages/AnalyticsPage.tsx
+artifacts/weather-dashboard/src/pages/EdaPage.tsx
+artifacts/weather-dashboard/src/App.tsx

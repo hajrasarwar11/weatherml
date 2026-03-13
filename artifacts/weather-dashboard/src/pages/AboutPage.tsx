@@ -19,32 +19,38 @@ const pipelineSteps = [
   {
     icon: Database,
     title: "1. Data Collection",
-    description: "8,784 hourly weather observations with 13 features including temperature, humidity, wind speed, visibility, and pressure.",
+    description:
+      "8,782 hourly weather observations with 13 features including temperature, humidity, wind speed, visibility, and pressure.",
   },
   {
     icon: Filter,
     title: "2. Preprocessing",
-    description: "Handle missing values, encode weather categories into 8 groups, engineer time-based features (Hour, Month, DayOfWeek, Temp-DewPoint diff).",
+    description:
+      "Handle missing values, encode weather categories into 8 groups, engineer time-based features (Hour, Month, DayOfWeek, Temp-DewPoint diff).",
   },
   {
     icon: BarChart3,
     title: "3. EDA & Analysis",
-    description: "Explore distributions, correlations, class imbalances. Generate statistical summaries and visualizations for all features.",
+    description:
+      "Explore distributions, correlations, class imbalances. Generate statistical summaries and visualisations for all features.",
   },
   {
     icon: Layers,
     title: "4. Feature Engineering",
-    description: "Create 4 derived features from timestamps and sensor data. Total of 10 input features for the model.",
+    description:
+      "Create 4 derived features from timestamps and sensor data. Total of 10 input features for the model.",
   },
   {
     icon: Cpu,
     title: "5. Model Training",
-    description: "Random Forest classifier with GridSearchCV for hyperparameter tuning. 80/20 train-test split with cross-validation.",
+    description:
+      "Random Forest classifier with GridSearchCV for hyperparameter tuning. 80/20 train-test split with cross-validation.",
   },
   {
     icon: CheckCircle2,
     title: "6. Evaluation & Deployment",
-    description: "77.6% test accuracy. Model saved with joblib, served via Express API for real-time predictions.",
+    description:
+      "77.6% test accuracy. Model saved with joblib, served via Express API for real-time predictions.",
   },
 ];
 
@@ -66,14 +72,14 @@ const techStack = [
 ];
 
 const futureScope = [
-  "Live weather API integration (OpenWeatherMap) for real-time dashboard",
-  "Interactive weather map with Leaflet and weather tile overlays",
-  "7-day forecast with hourly breakdown",
-  "Weather alerts system based on model predictions",
-  "XGBoost / Deep Learning model comparison",
-  "Multi-city support with location search",
-  "Historical trend analysis with custom date ranges",
-  "Export reports and predictions as PDF",
+  "XGBoost and Deep Learning model comparison with accuracy benchmarks",
+  "Export predictions and reports as downloadable PDF",
+  "Historical trend analysis with custom date-range selectors",
+  "Multi-region support — save and compare multiple cities",
+  "Weather pattern anomaly detection using unsupervised clustering",
+  "Push notifications for severe weather alerts",
+  "User-configurable dashboard with saved preferences",
+  "Mobile app (React Native) with offline ML inference",
 ];
 
 const containerVariants = {
@@ -88,7 +94,7 @@ const itemVariants = {
 
 export function AboutPage() {
   const { data } = useDashboardData();
-  const totalRows = data?.datasetInfo?.total_rows?.toLocaleString() || "8,784";
+  const totalRows = data?.datasetInfo?.total_rows?.toLocaleString() || "8,782";
   const totalCols = data?.datasetInfo?.total_columns ?? 13;
   const numClasses = data?.classDistData?.length ?? 8;
   const numFeatures = data?.datasetInfo?.feature_columns?.length ?? 10;
@@ -118,12 +124,16 @@ export function AboutPage() {
           <h1 className="text-3xl sm:text-4xl font-display font-black text-foreground mb-4">
             AI Weather Analytics Platform
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed mb-4">
             A complete end-to-end machine learning project that combines data science (EDA),
-            predictive modeling (Random Forest with GridSearchCV), and a professional
-            full-stack web application. Built to classify weather conditions into {numClasses} categories
-            from {totalRows} hourly sensor readings.
+            predictive modelling (Random Forest with GridSearchCV), live weather data via
+            OpenWeatherMap, and a professional full-stack web application. Built to classify
+            weather conditions into {numClasses} categories from {totalRows} hourly sensor
+            readings.
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+            <span className="text-sm text-primary font-medium">Created by Hajra</span>
+          </div>
         </div>
       </section>
 
@@ -132,7 +142,7 @@ export function AboutPage() {
         <p className="text-muted-foreground mb-6">
           The dataset contains hourly weather observations with the following characteristics:
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { label: "Records", value: totalRows, desc: "hourly observations" },
             { label: "Features", value: String(totalCols), desc: "original columns" },
