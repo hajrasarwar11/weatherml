@@ -111,7 +111,7 @@ export function ForecastPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-display font-bold text-foreground mb-1">
-            5-Day Forecast
+            5-Day Hourly Forecast
           </h1>
           <p className="text-muted-foreground">
             {forecast?.city?.name ? `${forecast.city.name}, ${forecast.city.country}` : "Detailed weather forecast"}
