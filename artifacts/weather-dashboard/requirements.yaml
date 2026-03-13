@@ -1,0 +1,14 @@
+packages:
+  "framer-motion": "For page transitions, tab animations, and interactive elements"
+  "recharts": "For rendering data visualizations (scatter, line, bar charts)"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility to safely merge Tailwind CSS classes"
+
+images:
+  - path: "artifacts/weather-dashboard/public/images/weather-hero.png"
+    description: "Abstract 3D glassmorphism weather elements floating in a dark premium professional environment, subtle glowing rain, snow, and sun symbols made of frosted glass, deep blue and purple lighting, 8k resolution"
+    aspect_ratio: "16:9"
+
+notes:
+  - "The project uses generated hooks from @workspace/api-client-react for data fetching."
+  - "Colors are mapped via CSS variables using Tailwind v4 @theme inline."

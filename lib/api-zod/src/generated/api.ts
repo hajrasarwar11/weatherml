@@ -14,3 +14,37 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Returns pre-computed EDA statistics and model performance metrics
+ * @summary Get EDA statistics and model metrics
+ */
+export const GetEdaStatsResponse = zod.object({
+  dataset_info: zod.record(zod.string(), zod.unknown()),
+  class_distribution: zod.record(zod.string(), zod.number()),
+  monthly_stats: zod.record(zod.string(), zod.unknown()),
+  correlation_matrix: zod.record(zod.string(), zod.unknown()),
+  feature_importances: zod.record(zod.string(), zod.number()),
+  model_metrics: zod.record(zod.string(), zod.unknown()),
+  scatter_data: zod.array(zod.record(zod.string(), zod.unknown())),
+  hourly_distribution: zod.array(zod.record(zod.string(), zod.unknown())),
+});
+
+/**
+ * Accepts sensor readings and returns predicted weather condition with probabilities
+ * @summary Predict weather condition
+ */
+export const PredictWeatherBody = zod.object({
+  temp_c: zod.number().describe("Temperature in Celsius"),
+  dew_point_temp_c: zod.number().describe("Dew Point Temperature in Celsius"),
+  rel_hum: zod.number().describe("Relative Humidity percentage"),
+  wind_speed_kmh: zod.number().describe("Wind Speed in km\/h"),
+  visibility_km: zod.number().describe("Visibility in km"),
+  press_kpa: zod.number().describe("Pressure in kPa"),
+});
+
+export const PredictWeatherResponse = zod.object({
+  predicted_weather: zod.string(),
+  probabilities: zod.record(zod.string(), zod.number()),
+  confidence: zod.number(),
+});

@@ -8,3 +8,57 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface ErrorResponse {
+  error: string;
+}
+
+export interface PredictRequest {
+  /** Temperature in Celsius */
+  temp_c: number;
+  /** Dew Point Temperature in Celsius */
+  dew_point_temp_c: number;
+  /** Relative Humidity percentage */
+  rel_hum: number;
+  /** Wind Speed in km/h */
+  wind_speed_kmh: number;
+  /** Visibility in km */
+  visibility_km: number;
+  /** Pressure in kPa */
+  press_kpa: number;
+}
+
+export type PredictResponseProbabilities = { [key: string]: number };
+
+export interface PredictResponse {
+  predicted_weather: string;
+  probabilities: PredictResponseProbabilities;
+  confidence: number;
+}
+
+export type EdaStatsDatasetInfo = { [key: string]: unknown };
+
+export type EdaStatsClassDistribution = { [key: string]: number };
+
+export type EdaStatsMonthlyStats = { [key: string]: unknown };
+
+export type EdaStatsCorrelationMatrix = { [key: string]: unknown };
+
+export type EdaStatsFeatureImportances = { [key: string]: number };
+
+export type EdaStatsModelMetrics = { [key: string]: unknown };
+
+export type EdaStatsScatterDataItem = { [key: string]: unknown };
+
+export type EdaStatsHourlyDistributionItem = { [key: string]: unknown };
+
+export interface EdaStats {
+  dataset_info: EdaStatsDatasetInfo;
+  class_distribution: EdaStatsClassDistribution;
+  monthly_stats: EdaStatsMonthlyStats;
+  correlation_matrix: EdaStatsCorrelationMatrix;
+  feature_importances: EdaStatsFeatureImportances;
+  model_metrics: EdaStatsModelMetrics;
+  scatter_data: EdaStatsScatterDataItem[];
+  hourly_distribution: EdaStatsHourlyDistributionItem[];
+}

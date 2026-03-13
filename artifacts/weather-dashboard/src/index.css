@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: 'Manrope', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-chart-6: hsl(var(--chart-6));
+  --color-chart-7: hsl(var(--chart-7));
+}
+
+:root {
+  /* Dark Mode Professional with Blue/Purple Accents */
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+
+  --card: 222 47% 9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222 47% 9%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 11%;
+
+  --secondary: 217 32% 17%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 217 32% 14%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --accent: 280 83% 60%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217 32% 17%;
+  --input: 217 32% 17%;
+  --ring: 217 91% 60%;
+
+  /* Data Visualization Colors */
+  --chart-1: 217 91% 60%; /* Bright Blue */
+  --chart-2: 280 83% 60%; /* Bright Purple */
+  --chart-3: 160 84% 39%; /* Teal */
+  --chart-4: 35 92% 60%;  /* Orange */
+  --chart-5: 340 82% 62%; /* Pink */
+  --chart-6: 50 98% 54%;  /* Yellow */
+  --chart-7: 190 90% 50%; /* Cyan */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased font-sans min-h-screen selection:bg-primary/30;
+    /* Adding subtle noise texture for premium feel */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+/* Custom Range Slider Styling */
+input[type=range] {
+  @apply appearance-none w-full h-2 bg-muted rounded-full outline-none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  @apply appearance-none w-5 h-5 rounded-full bg-primary shadow-[0_0_10px_rgba(59,130,246,0.8)] cursor-pointer transition-transform hover:scale-110 active:scale-95;
+}
+
+input[type=range]::-moz-range-thumb {
+  @apply appearance-none w-5 h-5 border-none rounded-full bg-primary shadow-[0_0_10px_rgba(59,130,246,0.8)] cursor-pointer transition-transform hover:scale-110 active:scale-95;
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+  @apply ring-4 ring-primary/30;
+}
+
+/* Glass panel utility */
+.glass-panel {
+  @apply bg-card/80 backdrop-blur-xl border border-border shadow-xl;
+}

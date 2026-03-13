@@ -1,0 +1,3712 @@
+{
+  "dataset_info": {
+    "total_rows": 8782,
+    "total_columns": 13,
+    "feature_columns": [
+      "Temp_C",
+      "Dew Point Temp_C",
+      "Rel Hum_%",
+      "Wind Speed_km/h",
+      "Visibility_km",
+      "Press_kPa",
+      "Hour",
+      "Month",
+      "DayOfWeek",
+      "Temp_DewPoint_Diff"
+    ],
+    "numeric_columns": [
+      "Temp_C",
+      "Dew Point Temp_C",
+      "Rel Hum_%",
+      "Wind Speed_km/h",
+      "Visibility_km",
+      "Press_kPa"
+    ]
+  },
+  "class_distribution": {
+    "Cloudy": 3797,
+    "Clear": 3432,
+    "Rain": 641,
+    "Snow": 556,
+    "Fog": 232,
+    "Freezing Precip": 83,
+    "Other": 25,
+    "Haze": 16
+  },
+  "monthly_stats": {
+    "1": {
+      "Temp_C": -7.37,
+      "Dew Point Temp_C": -12.29,
+      "Rel Hum_%": 68.38,
+      "Wind Speed_km/h": 18.11,
+      "Visibility_km": 22.1,
+      "Press_kPa": 101.01
+    },
+    "2": {
+      "Temp_C": -4.22,
+      "Dew Point Temp_C": -9.22,
+      "Rel Hum_%": 68.96,
+      "Wind Speed_km/h": 14.84,
+      "Visibility_km": 25.18,
+      "Press_kPa": 101.14
+    },
+    "3": {
+      "Temp_C": 3.12,
+      "Dew Point Temp_C": -3.49,
+      "Rel Hum_%": 64.86,
+      "Wind Speed_km/h": 14.51,
+      "Visibility_km": 26.18,
+      "Press_kPa": 101.34
+    },
+    "4": {
+      "Temp_C": 7.01,
+      "Dew Point Temp_C": -1.93,
+      "Rel Hum_%": 56.15,
+      "Wind Speed_km/h": 17.37,
+      "Visibility_km": 31.78,
+      "Press_kPa": 100.72
+    },
+    "5": {
+      "Temp_C": 16.24,
+      "Dew Point Temp_C": 8.08,
+      "Rel Hum_%": 61.76,
+      "Wind Speed_km/h": 12.85,
+      "Visibility_km": 29.42,
+      "Press_kPa": 101.06
+    },
+    "6": {
+      "Temp_C": 20.13,
+      "Dew Point Temp_C": 11.74,
+      "Rel Hum_%": 60.64,
+      "Wind Speed_km/h": 14.68,
+      "Visibility_km": 32.1,
+      "Press_kPa": 100.78
+    },
+    "7": {
+      "Temp_C": 22.79,
+      "Dew Point Temp_C": 14.58,
+      "Rel Hum_%": 61.98,
+      "Wind Speed_km/h": 11.9,
+      "Visibility_km": 33.68,
+      "Press_kPa": 100.83
+    },
+    "8": {
+      "Temp_C": 22.28,
+      "Dew Point Temp_C": 15.64,
+      "Rel Hum_%": 67.94,
+      "Wind Speed_km/h": 13.93,
+      "Visibility_km": 30.19,
+      "Press_kPa": 100.93
+    },
+    "9": {
+      "Temp_C": 16.48,
+      "Dew Point Temp_C": 10.76,
+      "Rel Hum_%": 71.17,
+      "Wind Speed_km/h": 14.11,
+      "Visibility_km": 30.6,
+      "Press_kPa": 101.09
+    },
+    "10": {
+      "Temp_C": 10.95,
+      "Dew Point Temp_C": 6.53,
+      "Rel Hum_%": 75.73,
+      "Wind Speed_km/h": 15.48,
+      "Visibility_km": 25.11,
+      "Press_kPa": 100.91
+    },
+    "11": {
+      "Temp_C": 0.93,
+      "Dew Point Temp_C": -4.18,
+      "Rel Hum_%": 69.98,
+      "Wind Speed_km/h": 13.97,
+      "Visibility_km": 26.08,
+      "Press_kPa": 101.66
+    },
+    "12": {
+      "Temp_C": -3.31,
+      "Dew Point Temp_C": -6.13,
+      "Rel Hum_%": 81.3,
+      "Wind Speed_km/h": 17.61,
+      "Visibility_km": 19.73,
+      "Press_kPa": 101.17
+    }
+  },
+  "correlation_matrix": {
+    "Temp_C": {
+      "Temp_C": 1.0,
+      "Dew Point Temp_C": 0.933,
+      "Rel Hum_%": -0.22,
+      "Wind Speed_km/h": -0.062,
+      "Visibility_km": 0.274,
+      "Press_kPa": -0.236
+    },
+    "Dew Point Temp_C": {
+      "Temp_C": 0.933,
+      "Dew Point Temp_C": 1.0,
+      "Rel Hum_%": 0.139,
+      "Wind Speed_km/h": -0.095,
+      "Visibility_km": 0.051,
+      "Press_kPa": -0.32
+    },
+    "Rel Hum_%": {
+      "Temp_C": -0.22,
+      "Dew Point Temp_C": 0.139,
+      "Rel Hum_%": 1.0,
+      "Wind Speed_km/h": -0.093,
+      "Visibility_km": -0.634,
+      "Press_kPa": -0.231
+    },
+    "Wind Speed_km/h": {
+      "Temp_C": -0.062,
+      "Dew Point Temp_C": -0.095,
+      "Rel Hum_%": -0.093,
+      "Wind Speed_km/h": 1.0,
+      "Visibility_km": 0.005,
+      "Press_kPa": -0.357
+    },
+    "Visibility_km": {
+      "Temp_C": 0.274,
+      "Dew Point Temp_C": 0.051,
+      "Rel Hum_%": -0.634,
+      "Wind Speed_km/h": 0.005,
+      "Visibility_km": 1.0,
+      "Press_kPa": 0.232
+    },
+    "Press_kPa": {
+      "Temp_C": -0.236,
+      "Dew Point Temp_C": -0.32,
+      "Rel Hum_%": -0.231,
+      "Wind Speed_km/h": -0.357,
+      "Visibility_km": 0.232,
+      "Press_kPa": 1.0
+    }
+  },
+  "feature_importances": {
+    "Temp_C": 0.126,
+    "Dew Point Temp_C": 0.1248,
+    "Rel Hum_%": 0.083,
+    "Wind Speed_km/h": 0.085,
+    "Visibility_km": 0.1237,
+    "Press_kPa": 0.1526,
+    "Hour": 0.0818,
+    "Month": 0.0633,
+    "DayOfWeek": 0.0609,
+    "Temp_DewPoint_Diff": 0.099
+  },
+  "model_metrics": {
+    "test_accuracy": 0.7757541263517359,
+    "cv_accuracy": 0.7664056939501779,
+    "best_params": {
+      "max_depth": "None",
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "n_estimators": 200
+    },
+    "per_class_metrics": {
+      "Clear": {
+        "precision": 0.8097,
+        "recall": 0.8049,
+        "f1_score": 0.8073,
+        "support": 687
+      },
+      "Cloudy": {
+        "precision": 0.7472,
+        "recall": 0.7974,
+        "f1_score": 0.7715,
+        "support": 760
+      },
+      "Fog": {
+        "precision": 0.8261,
+        "recall": 0.8261,
+        "f1_score": 0.8261,
+        "support": 46
+      },
+      "Freezing Precip": {
+        "precision": 0.8889,
+        "recall": 0.4706,
+        "f1_score": 0.6154,
+        "support": 17
+      },
+      "Haze": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 3
+      },
+      "Other": {
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1_score": 0.5714,
+        "support": 5
+      },
+      "Rain": {
+        "precision": 0.6893,
+        "recall": 0.5547,
+        "f1_score": 0.6147,
+        "support": 128
+      },
+      "Snow": {
+        "precision": 0.82,
+        "recall": 0.7387,
+        "f1_score": 0.7773,
+        "support": 111
+      }
+    },
+    "confusion_matrix": [
+      [
+        553,
+        133,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        123,
+        606,
+        0,
+        0,
+        0,
+        0,
+        22,
+        9
+      ],
+      [
+        0,
+        0,
+        38,
+        0,
+        0,
+        0,
+        7,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        8,
+        0,
+        0,
+        3,
+        4
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        2,
+        0,
+        2
+      ],
+      [
+        5,
+        46,
+        5,
+        0,
+        0,
+        0,
+        71,
+        1
+      ],
+      [
+        1,
+        26,
+        1,
+        1,
+        0,
+        0,
+        0,
+        82
+      ]
+    ],
+    "class_labels": [
+      "Clear",
+      "Cloudy",
+      "Fog",
+      "Freezing Precip",
+      "Haze",
+      "Other",
+      "Rain",
+      "Snow"
+    ]
+  },
+  "scatter_data": [
+    {
+      "Temp_C": 3.3,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.4,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 7.8,
+      "Rel Hum_%": 93,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 22.0,
+      "Rel Hum_%": 34,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.6,
+      "Rel Hum_%": 60,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 10.4,
+      "Rel Hum_%": 36,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.1,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.5,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.3,
+      "Rel Hum_%": 99,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -13.7,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -0.7,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 24.4,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -17.1,
+      "Rel Hum_%": 66,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.3,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 20.8,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 2.7,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.8,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 14.7,
+      "Rel Hum_%": 89,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 11.6,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 9.7,
+      "Rel Hum_%": 96,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 17.6,
+      "Rel Hum_%": 70,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.2,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.9,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -2.0,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -0.2,
+      "Rel Hum_%": 89,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 18.5,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 4.0,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -4.8,
+      "Rel Hum_%": 67,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.7,
+      "Rel Hum_%": 89,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.7,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 11.7,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 30.3,
+      "Rel Hum_%": 46,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -6.3,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 26.5,
+      "Rel Hum_%": 34,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -13.2,
+      "Rel Hum_%": 44,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 1.9,
+      "Rel Hum_%": 74,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 6.1,
+      "Rel Hum_%": 43,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 29.1,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 24.2,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -11.8,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 22.3,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 13.6,
+      "Rel Hum_%": 85,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 5.1,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Freezing Precip"
+    },
+    {
+      "Temp_C": 15.3,
+      "Rel Hum_%": 34,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 20.8,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 5.9,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -8.3,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 9.9,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 23.4,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 28.8,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 19.6,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 17.5,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 8.3,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 17.5,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 20.7,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 8.1,
+      "Rel Hum_%": 40,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -5.8,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Freezing Precip"
+    },
+    {
+      "Temp_C": -9.6,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 22.8,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 18.7,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.9,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -8.8,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 25.2,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 17.4,
+      "Rel Hum_%": 96,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 25.7,
+      "Rel Hum_%": 48,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 4.8,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 14.6,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.6,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.4,
+      "Rel Hum_%": 93,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 9.7,
+      "Rel Hum_%": 26,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 16.7,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.7,
+      "Rel Hum_%": 98,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 5.6,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 7.9,
+      "Rel Hum_%": 27,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -5.2,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 2.0,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 21.1,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 13.1,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 26.7,
+      "Rel Hum_%": 37,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 27.4,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.6,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.1,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 17.6,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 26.3,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -3.2,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 9.5,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 0.8,
+      "Rel Hum_%": 67,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.7,
+      "Rel Hum_%": 89,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 13.3,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.8,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.2,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 15.8,
+      "Rel Hum_%": 90,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.5,
+      "Rel Hum_%": 97,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 26.2,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 9.3,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.2,
+      "Rel Hum_%": 58,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 4.8,
+      "Rel Hum_%": 60,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 2.2,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 26.3,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 20.3,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.9,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 4.9,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 19.3,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -17.8,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 20.0,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 2.7,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 22.9,
+      "Rel Hum_%": 36,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.7,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -5.0,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 23.1,
+      "Rel Hum_%": 39,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.2,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 7.7,
+      "Rel Hum_%": 92,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -0.2,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -20.0,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.6,
+      "Rel Hum_%": 66,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.2,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -19.5,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.8,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Other"
+    },
+    {
+      "Temp_C": 24.5,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -6.8,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.4,
+      "Rel Hum_%": 44,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 1.7,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.7,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.9,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 22.5,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.2,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 26.1,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.9,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.3,
+      "Rel Hum_%": 70,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.0,
+      "Rel Hum_%": 93,
+      "Weather_Grouped": "Other"
+    },
+    {
+      "Temp_C": 27.0,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 9.5,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.8,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 4.6,
+      "Rel Hum_%": 41,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.2,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.4,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 6.9,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 3.0,
+      "Rel Hum_%": 44,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 12.6,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.1,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 2.2,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 7.7,
+      "Rel Hum_%": 25,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 14.5,
+      "Rel Hum_%": 37,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 32.9,
+      "Rel Hum_%": 35,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 25.3,
+      "Rel Hum_%": 60,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 7.9,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 18.3,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 9.7,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.1,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -0.1,
+      "Rel Hum_%": 90,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 11.2,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -0.3,
+      "Rel Hum_%": 91,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -1.7,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 10.1,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 7.9,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -2.1,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.9,
+      "Rel Hum_%": 48,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.3,
+      "Rel Hum_%": 99,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 16.1,
+      "Rel Hum_%": 93,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 15.5,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 3.1,
+      "Rel Hum_%": 92,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 14.2,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 8.0,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.5,
+      "Rel Hum_%": 94,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": -9.0,
+      "Rel Hum_%": 90,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -8.6,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 13.7,
+      "Rel Hum_%": 90,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": -5.4,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -4.4,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.6,
+      "Rel Hum_%": 90,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 42,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 10.2,
+      "Rel Hum_%": 36,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 18.1,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -4.9,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Freezing Precip"
+    },
+    {
+      "Temp_C": 30.1,
+      "Rel Hum_%": 40,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.6,
+      "Rel Hum_%": 42,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 0.0,
+      "Rel Hum_%": 94,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 11.0,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -0.6,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.4,
+      "Rel Hum_%": 70,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 20.7,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -12.1,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.9,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 23.5,
+      "Rel Hum_%": 67,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -12.1,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 11.3,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.6,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -12.8,
+      "Rel Hum_%": 66,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.4,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 12.0,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 1.1,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 24.1,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 58,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 23.9,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.0,
+      "Rel Hum_%": 43,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 8.2,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 7.5,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.3,
+      "Rel Hum_%": 34,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 10.7,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.2,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -9.7,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 1.5,
+      "Rel Hum_%": 98,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 22.8,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 1.5,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -4.2,
+      "Rel Hum_%": 85,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 20.9,
+      "Rel Hum_%": 21,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 27.8,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -11.3,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 3.9,
+      "Rel Hum_%": 90,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -11.9,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -4.4,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 26.8,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -9.5,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 22.0,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 25.9,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 2.2,
+      "Rel Hum_%": 95,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -0.8,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.1,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.8,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 31.8,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 23.1,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.0,
+      "Rel Hum_%": 99,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 13.1,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 70,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 25.8,
+      "Rel Hum_%": 42,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 23.1,
+      "Rel Hum_%": 74,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 15.9,
+      "Rel Hum_%": 96,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -11.6,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -3.2,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.9,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.3,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.1,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 1.1,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -1.1,
+      "Rel Hum_%": 85,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -15.2,
+      "Rel Hum_%": 63,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 2.6,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.0,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -5.9,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 19.3,
+      "Rel Hum_%": 89,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 7.3,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 4.0,
+      "Rel Hum_%": 63,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -15.9,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 30.2,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 7.8,
+      "Rel Hum_%": 46,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 2.6,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.3,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -11.6,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 8.4,
+      "Rel Hum_%": 42,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -18.0,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 11.7,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -1.8,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 10.6,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 25.2,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 25.6,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 11.0,
+      "Rel Hum_%": 100,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 4.7,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 26.2,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.8,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 14.4,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.0,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 20.7,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 27.1,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -6.3,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 2.1,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 5.3,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 2.5,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 21.5,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 15.7,
+      "Rel Hum_%": 28,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.0,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 24.1,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -0.3,
+      "Rel Hum_%": 94,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 9.7,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.3,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 11.3,
+      "Rel Hum_%": 97,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 17.1,
+      "Rel Hum_%": 66,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -7.6,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 19.4,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 24.3,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -6.6,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.3,
+      "Rel Hum_%": 96,
+      "Weather_Grouped": "Freezing Precip"
+    },
+    {
+      "Temp_C": 18.9,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 67,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -12.0,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 21.6,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.0,
+      "Rel Hum_%": 41,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 19.7,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 1.8,
+      "Rel Hum_%": 67,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -5.1,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.6,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -1.9,
+      "Rel Hum_%": 94,
+      "Weather_Grouped": "Freezing Precip"
+    },
+    {
+      "Temp_C": 18.8,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 13.0,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 1.1,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 20.3,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -2.7,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 20.6,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.3,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -1.5,
+      "Rel Hum_%": 70,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 28.4,
+      "Rel Hum_%": 48,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -9.4,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -3.9,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -13.1,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 19.6,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.3,
+      "Rel Hum_%": 99,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 4.1,
+      "Rel Hum_%": 58,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 30.1,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 23.5,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.1,
+      "Rel Hum_%": 70,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.3,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -6.9,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.9,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -3.6,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.1,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.6,
+      "Rel Hum_%": 33,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -18.6,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 8.4,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.2,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -20.6,
+      "Rel Hum_%": 58,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 24.5,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.5,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -4.6,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 0.8,
+      "Rel Hum_%": 97,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -8.3,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 29.2,
+      "Rel Hum_%": 34,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -6.3,
+      "Rel Hum_%": 92,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 3.1,
+      "Rel Hum_%": 93,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 18.7,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 23.7,
+      "Rel Hum_%": 44,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.0,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -4.7,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 25.0,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 25.9,
+      "Rel Hum_%": 35,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 3.0,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 10.9,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -4.1,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.3,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 27.2,
+      "Rel Hum_%": 40,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 20.3,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 26.3,
+      "Rel Hum_%": 42,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -15.1,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 22.0,
+      "Rel Hum_%": 44,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -0.5,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.9,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 23.2,
+      "Rel Hum_%": 41,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -1.8,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -2.9,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.5,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -8.4,
+      "Rel Hum_%": 58,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.3,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.7,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 9.6,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.7,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -10.8,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -0.6,
+      "Rel Hum_%": 74,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 19.4,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.2,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -4.9,
+      "Rel Hum_%": 67,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.8,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -4.1,
+      "Rel Hum_%": 74,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 23.9,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -3.6,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 4.1,
+      "Rel Hum_%": 34,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 27.3,
+      "Rel Hum_%": 45,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.4,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 19.9,
+      "Rel Hum_%": 92,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.7,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.6,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.2,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -4.3,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.6,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.9,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -8.6,
+      "Rel Hum_%": 57,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.1,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.0,
+      "Rel Hum_%": 66,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 25.8,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 9.0,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.7,
+      "Rel Hum_%": 41,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.3,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 0.8,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 21.1,
+      "Rel Hum_%": 73,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.7,
+      "Rel Hum_%": 98,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 19.2,
+      "Rel Hum_%": 92,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": -5.8,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 2.6,
+      "Rel Hum_%": 74,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.3,
+      "Rel Hum_%": 56,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 10.7,
+      "Rel Hum_%": 93,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 16.8,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -16.2,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 3.0,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -9.2,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 18.2,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 25.6,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.7,
+      "Rel Hum_%": 84,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -7.2,
+      "Rel Hum_%": 59,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -3.6,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -3.9,
+      "Rel Hum_%": 69,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.3,
+      "Rel Hum_%": 85,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 25.7,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 0.4,
+      "Rel Hum_%": 92,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 21.3,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.6,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 30.1,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 15.4,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 5.3,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 18.2,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 13.5,
+      "Rel Hum_%": 85,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 11.0,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 26.7,
+      "Rel Hum_%": 60,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -5.0,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 5.1,
+      "Rel Hum_%": 97,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 6.9,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -7.8,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 8.6,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 23.9,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 10.2,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 2.3,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -0.5,
+      "Rel Hum_%": 52,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -13.9,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 16.7,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 22.2,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 6.6,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -2.6,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.4,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -1.6,
+      "Rel Hum_%": 82,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -2.0,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 18.5,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -9.0,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -2.9,
+      "Rel Hum_%": 87,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": -13.9,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 10.5,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 21.7,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.3,
+      "Rel Hum_%": 39,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.6,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.7,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 29.2,
+      "Rel Hum_%": 53,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 22.1,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 16.5,
+      "Rel Hum_%": 96,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 2.6,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 24.2,
+      "Rel Hum_%": 51,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -13.7,
+      "Rel Hum_%": 63,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -9.7,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 12.3,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -2.7,
+      "Rel Hum_%": 80,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -0.3,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 9.8,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 3.9,
+      "Rel Hum_%": 42,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -0.2,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 15.2,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 0.7,
+      "Rel Hum_%": 96,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -3.8,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": 16.0,
+      "Rel Hum_%": 28,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.5,
+      "Rel Hum_%": 41,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -6.1,
+      "Rel Hum_%": 65,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -1.6,
+      "Rel Hum_%": 81,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 10.8,
+      "Rel Hum_%": 83,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -3.7,
+      "Rel Hum_%": 78,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.8,
+      "Rel Hum_%": 71,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -4.0,
+      "Rel Hum_%": 54,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 26.4,
+      "Rel Hum_%": 33,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -16.7,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -3.7,
+      "Rel Hum_%": 61,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 2.4,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 22.5,
+      "Rel Hum_%": 86,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.6,
+      "Rel Hum_%": 48,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 23.8,
+      "Rel Hum_%": 68,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 13.7,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 19.1,
+      "Rel Hum_%": 58,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 5.5,
+      "Rel Hum_%": 75,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 1.2,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -4.7,
+      "Rel Hum_%": 63,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.0,
+      "Rel Hum_%": 77,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 8.4,
+      "Rel Hum_%": 27,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": -6.6,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 23.6,
+      "Rel Hum_%": 47,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 21.9,
+      "Rel Hum_%": 76,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 15.6,
+      "Rel Hum_%": 62,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 27.7,
+      "Rel Hum_%": 39,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 13.5,
+      "Rel Hum_%": 91,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 2.0,
+      "Rel Hum_%": 50,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.4,
+      "Rel Hum_%": 98,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 3.1,
+      "Rel Hum_%": 88,
+      "Weather_Grouped": "Rain"
+    },
+    {
+      "Temp_C": 7.4,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 6.7,
+      "Rel Hum_%": 63,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 1.0,
+      "Rel Hum_%": 41,
+      "Weather_Grouped": "Snow"
+    },
+    {
+      "Temp_C": -11.6,
+      "Rel Hum_%": 55,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 11.6,
+      "Rel Hum_%": 99,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -6.3,
+      "Rel Hum_%": 72,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": -16.8,
+      "Rel Hum_%": 63,
+      "Weather_Grouped": "Cloudy"
+    },
+    {
+      "Temp_C": 11.5,
+      "Rel Hum_%": 64,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 31.7,
+      "Rel Hum_%": 49,
+      "Weather_Grouped": "Clear"
+    },
+    {
+      "Temp_C": 4.1,
+      "Rel Hum_%": 98,
+      "Weather_Grouped": "Fog"
+    },
+    {
+      "Temp_C": 21.1,
+      "Rel Hum_%": 79,
+      "Weather_Grouped": "Cloudy"
+    }
+  ],
+  "hourly_distribution": [
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Clear",
+      "count": 161
+    },
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Cloudy",
+      "count": 140
+    },
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Fog",
+      "count": 11
+    },
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 1
+    },
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Rain",
+      "count": 29
+    },
+    {
+      "Hour": 0,
+      "Weather_Grouped": "Snow",
+      "count": 23
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Clear",
+      "count": 172
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Cloudy",
+      "count": 132
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Fog",
+      "count": 8
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 2
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Other",
+      "count": 4
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Rain",
+      "count": 27
+    },
+    {
+      "Hour": 1,
+      "Weather_Grouped": "Snow",
+      "count": 20
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Clear",
+      "count": 169
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Cloudy",
+      "count": 131
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Fog",
+      "count": 9
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 5
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Other",
+      "count": 3
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Rain",
+      "count": 25
+    },
+    {
+      "Hour": 2,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Clear",
+      "count": 165
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Cloudy",
+      "count": 137
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Fog",
+      "count": 9
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Other",
+      "count": 4
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Rain",
+      "count": 23
+    },
+    {
+      "Hour": 3,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Clear",
+      "count": 168
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Cloudy",
+      "count": 131
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Fog",
+      "count": 12
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Rain",
+      "count": 28
+    },
+    {
+      "Hour": 4,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Clear",
+      "count": 153
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Cloudy",
+      "count": 145
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Fog",
+      "count": 16
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Other",
+      "count": 2
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Rain",
+      "count": 24
+    },
+    {
+      "Hour": 5,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Clear",
+      "count": 144
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Cloudy",
+      "count": 154
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Fog",
+      "count": 14
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Rain",
+      "count": 25
+    },
+    {
+      "Hour": 6,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Clear",
+      "count": 138
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Cloudy",
+      "count": 157
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Fog",
+      "count": 18
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 3
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Rain",
+      "count": 26
+    },
+    {
+      "Hour": 7,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Clear",
+      "count": 136
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Cloudy",
+      "count": 166
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Fog",
+      "count": 13
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 3
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Other",
+      "count": 2
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Rain",
+      "count": 23
+    },
+    {
+      "Hour": 8,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Clear",
+      "count": 135
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Cloudy",
+      "count": 168
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Fog",
+      "count": 13
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 2
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Rain",
+      "count": 22
+    },
+    {
+      "Hour": 9,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Clear",
+      "count": 132
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Cloudy",
+      "count": 172
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Fog",
+      "count": 12
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Rain",
+      "count": 22
+    },
+    {
+      "Hour": 10,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Clear",
+      "count": 129
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Cloudy",
+      "count": 173
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Fog",
+      "count": 10
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Rain",
+      "count": 23
+    },
+    {
+      "Hour": 11,
+      "Weather_Grouped": "Snow",
+      "count": 26
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Clear",
+      "count": 137
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Cloudy",
+      "count": 165
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Fog",
+      "count": 10
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 5
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Haze",
+      "count": 3
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Rain",
+      "count": 19
+    },
+    {
+      "Hour": 12,
+      "Weather_Grouped": "Snow",
+      "count": 27
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Clear",
+      "count": 134
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Cloudy",
+      "count": 177
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Fog",
+      "count": 7
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 5
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Rain",
+      "count": 22
+    },
+    {
+      "Hour": 13,
+      "Weather_Grouped": "Snow",
+      "count": 20
+    },
+    {
+      "Hour": 14,
+      "Weather_Grouped": "Clear",
+      "count": 124
+    },
+    {
+      "Hour": 14,
+      "Weather_Grouped": "Cloudy",
+      "count": 180
+    },
+    {
+      "Hour": 14,
+      "Weather_Grouped": "Fog",
+      "count": 6
+    },
+    {
+      "Hour": 14,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 5
+    },
+    {
+      "Hour": 14,
+      "Weather_Grouped": "Rain",
+      "count": 29
+    },
+    {
+      "Hour": 14,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 15,
+      "Weather_Grouped": "Clear",
+      "count": 124
+    },
+    {
+      "Hour": 15,
+      "Weather_Grouped": "Cloudy",
+      "count": 178
+    },
+    {
+      "Hour": 15,
+      "Weather_Grouped": "Fog",
+      "count": 7
+    },
+    {
+      "Hour": 15,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 5
+    },
+    {
+      "Hour": 15,
+      "Weather_Grouped": "Rain",
+      "count": 28
+    },
+    {
+      "Hour": 15,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Clear",
+      "count": 118
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Cloudy",
+      "count": 188
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Fog",
+      "count": 4
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 3
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Haze",
+      "count": 2
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Rain",
+      "count": 29
+    },
+    {
+      "Hour": 16,
+      "Weather_Grouped": "Snow",
+      "count": 20
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Clear",
+      "count": 125
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Cloudy",
+      "count": 175
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Fog",
+      "count": 3
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 5
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Rain",
+      "count": 33
+    },
+    {
+      "Hour": 17,
+      "Weather_Grouped": "Snow",
+      "count": 23
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Clear",
+      "count": 129
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Cloudy",
+      "count": 167
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Fog",
+      "count": 4
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Rain",
+      "count": 36
+    },
+    {
+      "Hour": 18,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 19,
+      "Weather_Grouped": "Clear",
+      "count": 135
+    },
+    {
+      "Hour": 19,
+      "Weather_Grouped": "Cloudy",
+      "count": 154
+    },
+    {
+      "Hour": 19,
+      "Weather_Grouped": "Fog",
+      "count": 9
+    },
+    {
+      "Hour": 19,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 2
+    },
+    {
+      "Hour": 19,
+      "Weather_Grouped": "Rain",
+      "count": 40
+    },
+    {
+      "Hour": 19,
+      "Weather_Grouped": "Snow",
+      "count": 26
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Clear",
+      "count": 142
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Cloudy",
+      "count": 161
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Fog",
+      "count": 9
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 4
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Rain",
+      "count": 27
+    },
+    {
+      "Hour": 20,
+      "Weather_Grouped": "Snow",
+      "count": 22
+    },
+    {
+      "Hour": 21,
+      "Weather_Grouped": "Clear",
+      "count": 159
+    },
+    {
+      "Hour": 21,
+      "Weather_Grouped": "Cloudy",
+      "count": 143
+    },
+    {
+      "Hour": 21,
+      "Weather_Grouped": "Fog",
+      "count": 9
+    },
+    {
+      "Hour": 21,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 2
+    },
+    {
+      "Hour": 21,
+      "Weather_Grouped": "Rain",
+      "count": 28
+    },
+    {
+      "Hour": 21,
+      "Weather_Grouped": "Snow",
+      "count": 25
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Clear",
+      "count": 151
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Cloudy",
+      "count": 154
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Fog",
+      "count": 11
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 1
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Rain",
+      "count": 24
+    },
+    {
+      "Hour": 22,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Clear",
+      "count": 152
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Cloudy",
+      "count": 149
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Fog",
+      "count": 8
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Freezing Precip",
+      "count": 2
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Haze",
+      "count": 1
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Other",
+      "count": 1
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Rain",
+      "count": 29
+    },
+    {
+      "Hour": 23,
+      "Weather_Grouped": "Snow",
+      "count": 24
+    }
+  ]
+}

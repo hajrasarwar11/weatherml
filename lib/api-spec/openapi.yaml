@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: ml
+    description: Machine learning operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,56 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /eda-stats:
+    get:
+      operationId: getEdaStats
+      tags: [ml]
+      summary: Get EDA statistics and model metrics
+      description: Returns pre-computed EDA statistics and model performance metrics
+      responses:
+        "200":
+          description: EDA stats and model metrics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdaStats"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /predict:
+    post:
+      operationId: predictWeather
+      tags: [ml]
+      summary: Predict weather condition
+      description: Accepts sensor readings and returns predicted weather condition with probabilities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PredictRequest"
+      responses:
+        "200":
+          description: Prediction result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PredictResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +85,95 @@ components:
           type: string
       required:
         - status
-
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    PredictRequest:
+      type: object
+      properties:
+        temp_c:
+          type: number
+          description: Temperature in Celsius
+        dew_point_temp_c:
+          type: number
+          description: Dew Point Temperature in Celsius
+        rel_hum:
+          type: number
+          description: Relative Humidity percentage
+        wind_speed_kmh:
+          type: number
+          description: Wind Speed in km/h
+        visibility_km:
+          type: number
+          description: Visibility in km
+        press_kpa:
+          type: number
+          description: Pressure in kPa
+      required:
+        - temp_c
+        - dew_point_temp_c
+        - rel_hum
+        - wind_speed_kmh
+        - visibility_km
+        - press_kpa
+    PredictResponse:
+      type: object
+      properties:
+        predicted_weather:
+          type: string
+        probabilities:
+          type: object
+          additionalProperties:
+            type: number
+        confidence:
+          type: number
+      required:
+        - predicted_weather
+        - probabilities
+        - confidence
+    EdaStats:
+      type: object
+      properties:
+        dataset_info:
+          type: object
+          additionalProperties: true
+        class_distribution:
+          type: object
+          additionalProperties:
+            type: number
+        monthly_stats:
+          type: object
+          additionalProperties: true
+        correlation_matrix:
+          type: object
+          additionalProperties: true
+        feature_importances:
+          type: object
+          additionalProperties:
+            type: number
+        model_metrics:
+          type: object
+          additionalProperties: true
+        scatter_data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        hourly_distribution:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      required:
+        - dataset_info
+        - class_distribution
+        - monthly_stats
+        - correlation_matrix
+        - feature_importances
+        - model_metrics
+        - scatter_data
+        - hourly_distribution

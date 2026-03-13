@@ -5,18 +5,27 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type {
+  MutationFunction,
   QueryFunction,
   QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { HealthStatus } from "./api.schemas";
+import type {
+  EdaStats,
+  ErrorResponse,
+  HealthStatus,
+  PredictRequest,
+  PredictResponse,
+} from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
-import type { ErrorType } from "../custom-fetch";
+import type { ErrorType, BodyType } from "../custom-fetch";
 
 type AwaitedInput<T> = PromiseLike<T> | T;
 
@@ -99,3 +108,164 @@ export function useHealthCheck<
 
   return { ...query, queryKey: queryOptions.queryKey };
 }
+
+/**
+ * Returns pre-computed EDA statistics and model performance metrics
+ * @summary Get EDA statistics and model metrics
+ */
+export const getGetEdaStatsUrl = () => {
+  return `/api/eda-stats`;
+};
+
+export const getEdaStats = async (options?: RequestInit): Promise<EdaStats> => {
+  return customFetch<EdaStats>(getGetEdaStatsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetEdaStatsQueryKey = () => {
+  return [`/api/eda-stats`] as const;
+};
+
+export const getGetEdaStatsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getEdaStats>>,
+  TError = ErrorType<ErrorResponse>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getEdaStats>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetEdaStatsQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getEdaStats>>> = ({
+    signal,
+  }) => getEdaStats({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getEdaStats>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetEdaStatsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getEdaStats>>
+>;
+export type GetEdaStatsQueryError = ErrorType<ErrorResponse>;
+
+/**
+ * @summary Get EDA statistics and model metrics
+ */
+
+export function useGetEdaStats<
+  TData = Awaited<ReturnType<typeof getEdaStats>>,
+  TError = ErrorType<ErrorResponse>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getEdaStats>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetEdaStatsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * Accepts sensor readings and returns predicted weather condition with probabilities
+ * @summary Predict weather condition
+ */
+export const getPredictWeatherUrl = () => {
+  return `/api/predict`;
+};
+
+export const predictWeather = async (
+  predictRequest: PredictRequest,
+  options?: RequestInit,
+): Promise<PredictResponse> => {
+  return customFetch<PredictResponse>(getPredictWeatherUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(predictRequest),
+  });
+};
+
+export const getPredictWeatherMutationOptions = <
+  TError = ErrorType<ErrorResponse>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof predictWeather>>,
+    TError,
+    { data: BodyType<PredictRequest> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof predictWeather>>,
+  TError,
+  { data: BodyType<PredictRequest> },
+  TContext
+> => {
+  const mutationKey = ["predictWeather"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof predictWeather>>,
+    { data: BodyType<PredictRequest> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return predictWeather(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type PredictWeatherMutationResult = NonNullable<
+  Awaited<ReturnType<typeof predictWeather>>
+>;
+export type PredictWeatherMutationBody = BodyType<PredictRequest>;
+export type PredictWeatherMutationError = ErrorType<ErrorResponse>;
+
+/**
+ * @summary Predict weather condition
+ */
+export const usePredictWeather = <
+  TError = ErrorType<ErrorResponse>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof predictWeather>>,
+    TError,
+    { data: BodyType<PredictRequest> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof predictWeather>>,
+  TError,
+  { data: BodyType<PredictRequest> },
+  TContext
+> => {
+  return useMutation(getPredictWeatherMutationOptions(options));
+};
