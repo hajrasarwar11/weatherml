@@ -47,3 +47,20 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.uv/
+uv.lock
+
+# Replit agent workspace
+.local/
+attached_assets/
+
+# Streamlit local cache
+.streamlit/
+
+# OS
+.DS_Store
