@@ -49,8 +49,11 @@ interface ScatterRaw {
   Weather_Grouped: string;
 }
 
-function asRecord<T>(val: unknown): T {
-  return val as T;
+interface DatasetInfo {
+  total_rows: number;
+  total_columns: number;
+  feature_columns: string[];
+  numeric_columns: string[];
 }
 
 export function useDashboardData() {
@@ -58,12 +61,14 @@ export function useDashboardData() {
 
   if (!data) return { data: null, isLoading, error };
 
+  const datasetInfo = data.dataset_info as unknown as DatasetInfo;
+
   const classDistData: ClassDist[] = Object.entries(data.class_distribution || {})
     .map(([name, value]) => ({ name, value }))
     .sort((a, b) => b.value - a.value);
 
-  const rawMonthly = asRecord<Record<string, MonthlyStatRaw>>(data.monthly_stats || {});
-  const monthlyData = Object.keys(rawMonthly)
+  const rawMonthly = data.monthly_stats as unknown as Record<string, MonthlyStatRaw>;
+  const monthlyData = Object.keys(rawMonthly || {})
     .sort((a, b) => parseInt(a) - parseInt(b))
     .map((m) => {
       const { ...stats } = rawMonthly[m];
@@ -74,14 +79,14 @@ export function useDashboardData() {
     .map(([feature, importance]) => ({ feature, importance }))
     .sort((a, b) => b.importance - a.importance);
 
-  const metrics = asRecord<ModelMetrics>(data.model_metrics || {});
-  const perClassMetrics = metrics.per_class_metrics || {};
-  const corrMatrix = asRecord<Record<string, Record<string, number>>>(data.correlation_matrix || {});
-  const confusionMatrix = metrics.confusion_matrix || [];
-  const classLabels = metrics.class_labels || [];
+  const metrics = data.model_metrics as unknown as ModelMetrics;
+  const perClassMetrics = metrics?.per_class_metrics || {};
+  const corrMatrix = data.correlation_matrix as unknown as Record<string, Record<string, number>>;
+  const confusionMatrix = metrics?.confusion_matrix || [];
+  const classLabels = metrics?.class_labels || [];
 
-  const rawScatter = asRecord<ScatterRaw[]>(data.scatter_data || []);
-  const scatterData: ScatterPoint[] = rawScatter.map((d) => ({
+  const rawScatter = data.scatter_data as unknown as ScatterRaw[];
+  const scatterData: ScatterPoint[] = (rawScatter || []).map((d) => ({
     temp: Number(d.Temp_C ?? 0),
     humidity: Number(d["Rel Hum_%"] ?? 0),
     weather: d.Weather_Grouped ?? "Unknown",
@@ -90,6 +95,7 @@ export function useDashboardData() {
   return {
     data: {
       ...data,
+      datasetInfo,
       classDistData,
       monthlyData,
       featureImportanceData,

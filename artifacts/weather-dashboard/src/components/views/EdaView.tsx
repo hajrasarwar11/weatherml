@@ -59,7 +59,7 @@ function CorrelationHeatmap({ matrix }: { matrix: Record<string, Record<string, 
 }
 
 export function EdaView({ data }: { data: DashboardData }) {
-  const datasetInfo = data.dataset_info || {};
+  const datasetInfo = data.datasetInfo;
 
   return (
     <motion.div 
